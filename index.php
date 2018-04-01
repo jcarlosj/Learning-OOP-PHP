@@ -1,16 +1,16 @@
 <?php
   /* Programación orientada a objetos */
 
-  /* Función */
-  function nombreCompleto( $nombre, $apellido ) {
-    return "$nombre $apellido";
-  }
-
   # Clase
   class Persona {
     /* Atributos */
     var $nombre,
         $apellido;
+
+    /* Función */
+    function nombreCompleto() {
+      return "$this->nombre $this->apellido";
+    }
   }
 
   # Instancias
@@ -23,5 +23,5 @@
   $persona2 -> apellido = 'Herrera';
 
   # Mensaje
-  echo nombreCompleto( $persona1 -> nombre, $persona1 -> apellido ) ." es amiga de ". nombreCompleto( $persona2 -> nombre, $persona2 -> apellido );
+  echo "{$persona1 -> nombreCompleto()} es amiga de {$persona2 -> nombreCompleto()}";
 ?>
