@@ -44,11 +44,14 @@
     }
 
     public function setNickname( $nickname ) {
-      # Valida si el nickname no ha sido modificado más de dos veces
-      if( $this -> changedNickname < 2 ) {
-        $this -> nickname = $nickname;
-        $this -> changedNickname++;
+      # Valida si el nickname ha sido modificado más de dos veces
+      if( $this -> changedNickname >= 2 ) {
+        # Agrega una Excepción o Validación (Mensajes al programador para que evite cometer errores)
+        throw new Exception( 'No puede cambiar el nombre más de 2 veces' );
       }
+
+      $this -> nickname = $nickname;
+      $this -> changedNickname++;
     }
 
   }
