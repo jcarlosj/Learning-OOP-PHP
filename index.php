@@ -4,17 +4,17 @@
   # Clase
   class Persona {
     /* Atributos */
-    var $nombre,
-        $apellido;
+    public $nombre,
+           $apellido;
 
     /* Constructor */
-    function __construct( $nombre, $apellido ) {
+    public function __construct( $nombre, $apellido ) {
       $this -> nombre = $nombre;
       $this -> apellido = $apellido;
     }
 
     /* Función */
-    function nombreCompleto() {
+    public function nombreCompleto() {
       return "$this->nombre $this->apellido";
     }
   }
