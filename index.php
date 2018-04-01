@@ -7,6 +7,12 @@
     var $nombre,
         $apellido;
 
+    /* Constructor */
+    function __construct( $nombre, $apellido ) {
+      $this -> nombre = $nombre;
+      $this -> apellido = $apellido;
+    }
+
     /* Función */
     function nombreCompleto() {
       return "$this->nombre $this->apellido";
@@ -14,13 +20,8 @@
   }
 
   # Instancias
-  $persona1 = new Persona;
-  $persona1 -> nombre = 'Melisa';
-  $persona1 -> apellido = 'Sánchez';
-
-  $persona2 = new Persona;
-  $persona2 -> nombre = 'Juan';
-  $persona2 -> apellido = 'Herrera';
+  $persona1 = new Persona( 'Melisa', 'Sánchez' );
+  $persona2 = new Persona( 'Juan', 'Herrera' );
 
   # Mensaje
   echo "{$persona1 -> nombreCompleto()} es amiga de {$persona2 -> nombreCompleto()}";
