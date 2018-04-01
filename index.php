@@ -5,7 +5,9 @@
   class Persona {
     /* Atributos */
     private $nombre,                # Encapsula al cambiar el modificador de acceso
-            $apellido;
+            $apellido,
+            $nickname,
+            $changedNickname = 0;
 
     /* Constructor */
     public function __construct( $nombre, $apellido ) {
@@ -27,6 +29,11 @@
       return $this -> apellido;
     }
 
+    public function getNickname() {
+      # Siempre devuelte los apodos en minúsculas
+      return strtolower( $this -> nickname );
+    }
+
     /* Setters */
     public function setPrimerNombre( $nombre ) {
       $this -> nombre = $nombre;
@@ -34,6 +41,14 @@
 
     public function setPrimerApellido( $apellido ) {
       $this -> apellido = $apellido;
+    }
+
+    public function setNickname( $nickname ) {
+      # Valida si el nickname no ha sido modificado más de dos veces
+      if( $this -> changedNickname < 2 ) {
+        $this -> nickname = $nickname;
+        $this -> changedNickname++;
+      }
     }
 
   }
@@ -49,10 +64,18 @@
   $persona1 -> setPrimerNombre( 'Bryan' );
   $persona1 -> setPrimerApellido( 'Muñoz' );
 
-  /* NOTA: Podemos modificar las propiedades o atributos del objeto 'persona1'
-           haciendo uso de los Setters, métodos que permiten cambiar el valor
-           contenido en una propiedad de la clase */
+  /* NOTA: La ventaja de usar modificadores de acceso de tipo 'private' y/o 'protected'
+           y tener que usar 'Getters' y 'Setters' es que podemos agregarles comportamientos */
 
    # Mensaje
-   echo "{$persona1->getPrimerNombre()} {$persona1->getPrimerApellido()} es amigo de {$persona2 -> nombreCompleto()}";
+   echo "{$persona1->getPrimerNombre()} {$persona1->getPrimerApellido()} es amigo de {$persona2 -> nombreCompleto()} <br /><br />";
+
+   # Agregamos el Nickname para el objeto 'persona1'
+   $persona1 -> setNickName( 'Bro' );
+   echo "El apodo de {$persona1->getPrimerNombre()} es {$persona1 -> getNickname()} <br />";
+   $persona1 -> setNickName( 'Menor' );
+   echo "El apodo de {$persona1->getPrimerNombre()} es {$persona1 -> getNickname()} <br />";
+   $persona1 -> setNickName( 'El Papi' );     # Este último cambio no se realiza, ERROR silencioso ya que no advertimos de que solo se puede cambiar 2 veces
+   echo "El apodo de {$persona1->getPrimerNombre()} es {$persona1 -> getNickname()} <br />";
+
 ?>
