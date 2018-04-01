@@ -1,14 +1,27 @@
 <?php
-  /* Programación estructurada (Código spaguetti) */
+  /* Programación orientada a objetos */
+
+  /* Función */
   function nombreCompleto( $nombre, $apellido ) {
     return "$nombre $apellido";
   }
 
-  $nombrePersona1 = 'Melisa';
-  $apellidoPersona1 = 'Sánchez';
+  # Clase
+  class Persona {
+    /* Atributos */
+    var $nombre,
+        $apellido;
+  }
 
-  $nombrePersona2 = 'Juan';
-  $apellidoPersona2 = 'Herrera';
+  # Instancias
+  $persona1 = new Persona;
+  $persona1 -> nombre = 'Melisa';
+  $persona1 -> apellido = 'Sánchez';
 
-  echo nombreCompleto( $nombrePersona1, $apellidoPersona1 ) ." es amiga de ". nombreCompleto( $nombrePersona2, $apellidoPersona2 );
+  $persona2 = new Persona;
+  $persona2 -> nombre = 'Juan';
+  $persona2 -> apellido = 'Herrera';
+
+  # Mensaje
+  echo nombreCompleto( $persona1 -> nombre, $persona1 -> apellido ) ." es amiga de ". nombreCompleto( $persona2 -> nombre, $persona2 -> apellido );
 ?>
