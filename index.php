@@ -1,12 +1,14 @@
 <?php
   /* Programación estructurada (Código spaguetti) */
+  function nombreCompleto( $nombre, $apellido ) {
+    return "$nombre $apellido";
+  }
+
   $nombrePersona1 = 'Melisa';
   $apellidoPersona1 = 'Sánchez';
-  $nombreCompleto1 = "$nombrePersona1 $apellidoPersona1";
 
   $nombrePersona2 = 'Juan';
   $apellidoPersona2 = 'Herrera';
-  $nombreCompleto2 = "$nombrePersona2 $apellidoPersona2";
 
-  echo "$nombreCompleto1 es amiga de $nombreCompleto2";
+  echo nombreCompleto( $nombrePersona1, $apellidoPersona1 ) ." es amiga de ". nombreCompleto( $nombrePersona2, $apellidoPersona2 );
 ?>
