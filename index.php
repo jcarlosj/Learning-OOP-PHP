@@ -25,9 +25,11 @@
       echo "<p>$this->nombre avanza hacia el $direccion</p>";
     }
 
-    public function atacar( $oponente ) {
-       echo "<p>$this->nombre ataca a $oponente</p>";
-    }
+    /* Hacemos que el método sea genérico, es decir, le indicamos que como 'Unidad'
+      debe realizar un ataque pero no especificamos que tipo de ataque. Esto obliga
+      a que el comportamiento sea definido en las clases hijas */
+    abstract public function atacar( $oponente );
+
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
   }
 
@@ -41,10 +43,7 @@
 
   # Clase Hijo hereda de la clase 'Unidad'
   class Arquero extends Unidad {
-    /* Métodos (Acciones) */
-    public function atacar( $oponente ) {
-       echo "<p>$this->nombre dispara una flecha a $oponente</p>";
-    }
+
   }
 
   # Instancia con la nueva clase 'Soldado'
@@ -56,8 +55,5 @@
   $jhonny -> atacar( $bryan -> getNombre() );
 
   $bryan -> atacar( $jhonny -> getNombre() );
-
-  # Al instanciar una clase abstracta se generará un error
-  $juan = new Unidad( 'Herrera' );
 
 ?>
