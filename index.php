@@ -1,7 +1,7 @@
 <?php
   /* Programación orientada a objetos */
 
-  # Clase
+  # Clase Padre
   class Unidad {
     /* Propiedades (Atributos) */
     private $vivo = true,
@@ -29,9 +29,15 @@
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
   }
 
-  # Instancias
-  $bryan = new Unidad( 'Muñoz' );
+  # Clase Hijo hereda de la clase 'Unidad'
+  class Soldado extends Unidad {
 
+  }
+
+  # Instancia con la nueva clase 'Soldado'
+  $bryan = new Soldado( 'Muñoz' );
+
+  # Instancia con la clase Padre 'Unidad'
   $jhonny = new Unidad( 'Cortes' );
   $jhonny -> mover( 'norte' );
   $jhonny -> atacar( $bryan -> getNombre() );
