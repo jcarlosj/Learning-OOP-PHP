@@ -30,6 +30,9 @@
       a que el comportamiento sea definido en las clases hijas */
     abstract public function atacar( $oponente );
 
+    public function muere() {
+      echo "<p>$this->nombre muere</p>";
+    }
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
   }
 
@@ -37,7 +40,8 @@
   class Soldado extends Unidad {
     /* Métodos (Acciones) */
     public function atacar( $oponente ) {
-       echo "<p>$this->nombre corta a $oponente en dos</p>";
+       echo "<p>$this->nombre corta a {$oponente->getNombre()} en dos</p>";
+       $oponente -> muere();
     }
   }
 
@@ -45,7 +49,8 @@
   class Arquero extends Unidad {
     /* Métodos (Acciones) */
     public function atacar( $oponente ) {
-       echo "<p>$this->nombre dispara una flecha a $oponente</p>";
+       echo "<p>$this->nombre dispara una flecha a {$oponente->getNombre()}</p>";
+       $oponente -> muere();
     }
   }
 
@@ -54,9 +59,6 @@
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
-  #$jhonny -> mover( 'norte' );
-  $jhonny -> atacar( $bryan -> getNombre() );
-
-  $bryan -> atacar( $jhonny -> getNombre() );
+  $jhonny -> atacar( $bryan );
 
 ?>
