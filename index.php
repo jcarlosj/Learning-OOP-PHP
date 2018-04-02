@@ -4,8 +4,8 @@
   # Clase Padre
   class Unidad {
     /* Propiedades (Atributos) */
-    private $vivo = true,
-            $nombre;
+    protected $vivo = true,
+              $nombre;
 
     /* Constructor */
     public function __construct( $nombre ) {
@@ -23,15 +23,17 @@
     }
 
     public function atacar( $oponente ) {
-       echo "<p>$this->nombre ataca a: $oponente</p>";
+       echo "<p>$this->nombre ataca a $oponente</p>";
     }
-
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
   }
 
   # Clase Hijo hereda de la clase 'Unidad'
   class Soldado extends Unidad {
-
+    /* Métodos (Acciones) */
+    public function atacar( $oponente ) {
+       echo "<p>$this->nombre corta a $oponente en dos</p>";
+    }
   }
 
   # Instancia con la nueva clase 'Soldado'
@@ -41,5 +43,7 @@
   $jhonny = new Unidad( 'Cortes' );
   $jhonny -> mover( 'norte' );
   $jhonny -> atacar( $bryan -> getNombre() );
+
+  $bryan -> atacar( $jhonny -> getNombre() );
 
 ?>
