@@ -1,8 +1,11 @@
 <?php
   /* Programación orientada a objetos */
 
-  # Clase Padre
-  class Unidad {
+  /* Clase Padre
+     Como esta clase es en sí un concepto genérico de lo que se desea representar.
+     No representa nada concreto entonces la declaramos como una clase abstracta,
+     de manera que no podrá ser instanciada si no a través de las clases hijas  */
+  abstract class Unidad {
     /* Propiedades (Atributos) */
     protected $vivo = true,
               $nombre;
@@ -53,5 +56,8 @@
   $jhonny -> atacar( $bryan -> getNombre() );
 
   $bryan -> atacar( $jhonny -> getNombre() );
+
+  # Al instanciar una clase abstracta se generará un error
+  $juan = new Unidad( 'Herrera' );
 
 ?>
