@@ -22,7 +22,7 @@
 
     /* Métodos (Acciones) */
     public function mover( $direccion ) {
-      echo "<p>$this->nombre avanza hacia el $direccion</p>";
+      show( "$this->nombre avanza hacia el $direccion" );
     }
 
     /* Hacemos que el método sea genérico, es decir, le indicamos que como 'Unidad'
@@ -31,7 +31,7 @@
     abstract public function atacar( $oponente );
 
     public function muere() {
-      echo "<p>$this->nombre muere</p>";
+      show( "$this->nombre muere" );
     }
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
   }
@@ -40,7 +40,7 @@
   class Soldado extends Unidad {
     /* Métodos (Acciones) */
     public function atacar( $oponente ) {
-       echo "<p>$this->nombre corta a {$oponente->getNombre()} en dos</p>";
+       show( "$this->nombre corta a {$oponente->getNombre()} en dos" );
        $oponente -> muere();
     }
   }
@@ -49,7 +49,7 @@
   class Arquero extends Unidad {
     /* Métodos (Acciones) */
     public function atacar( $oponente ) {
-       echo "<p>$this->nombre dispara una flecha a {$oponente->getNombre()}</p>";
+       show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
        $oponente -> muere();
     }
   }
@@ -60,5 +60,10 @@
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
   $jhonny -> atacar( $bryan );
+
+  # Función para evitar la duplicación del código (definición de los tags de párrafo y el echo)
+  function show( $mensaje ) {
+    echo "<p>$mensaje</p>";
+  }
 
 ?>
