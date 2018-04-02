@@ -43,7 +43,10 @@
 
   # Clase Hijo hereda de la clase 'Unidad'
   class Arquero extends Unidad {
-
+    /* Métodos (Acciones) */
+    public function atacar( $oponente ) {
+       echo "<p>$this->nombre dispara una flecha a $oponente</p>";
+    }
   }
 
   # Instancia con la nueva clase 'Soldado'
