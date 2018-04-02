@@ -36,12 +36,20 @@
     }
   }
 
+  # Clase Hijo hereda de la clase 'Unidad'
+  class Arquero extends Unidad {
+    /* Métodos (Acciones) */
+    public function atacar( $oponente ) {
+       echo "<p>$this->nombre dispara una flecha a $oponente</p>";
+    }
+  }
+
   # Instancia con la nueva clase 'Soldado'
   $bryan = new Soldado( 'Muñoz' );
 
   # Instancia con la clase Padre 'Unidad'
-  $jhonny = new Unidad( 'Cortes' );
-  $jhonny -> mover( 'norte' );
+  $jhonny = new Arquero( 'Cortes' );
+  #$jhonny -> mover( 'norte' );
   $jhonny -> atacar( $bryan -> getNombre() );
 
   $bryan -> atacar( $jhonny -> getNombre() );
