@@ -63,7 +63,7 @@
 
     /* Métodos (Acciones) */
     public function atacar( Unidad $oponente ) {
-       show( "$this->nombre corta a {$oponente->getNombre()} en dos" );
+       show( "$this->nombre ataca con la espada a {$oponente->getNombre()}" );
 
        $oponente -> danoOcasionado( $this -> puntosDanio );
 
@@ -85,6 +85,15 @@
        show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
 
        $oponente -> danoOcasionado( $this -> puntosDanio );
+
+    }
+
+    public function danoOcasionado( $puntosDanio ) {
+      # Valida si es verdadero 1, o falso 0, lo que le permite repeler el daño aleatoriamente y sobrevivir
+      if( rand( 0, 1 ) ) {
+        # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: )
+        return parent :: danoOcasionado( $puntosDanio );
+      }
 
     }
   }
