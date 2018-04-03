@@ -24,7 +24,7 @@
       return $this -> puntosVida;
     }
 
-    public function setPuntos( $puntosVida ) {
+    private function setPuntos( $puntosVida ) {
       $this -> puntosVida = $puntosVida;
       show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
     }
@@ -39,6 +39,17 @@
       a que el comportamiento sea definido en las clases hijas */
     abstract public function atacar( Unidad $oponente );
 
+    public function danoOcasionado( $puntosDanio ) {
+
+       # Fija el valor de puntos después de un ataque
+       $this -> setPuntos( $this -> puntosVida - $puntosDanio );
+
+       # Valida si el oponente aún tiene puntos
+       if( $this -> puntosVida <= 0 ) {
+          $this -> muere();
+       }
+    }
+
     public function muere() {
       show( "$this->nombre muere" );
     }
@@ -52,6 +63,11 @@
        show( "$this->nombre corta a {$oponente->getNombre()} en dos" );
        $oponente -> muere();
     }
+
+    public function danoOcasionado( $puntosDanio ) {
+      # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: ) y como es un 'Soldado' pasamos la mitad del daño
+      return parent :: danoOcasionado( $puntosDanio / 2 );
+    }
   }
 
   # Clase Hijo hereda de la clase 'Unidad'
@@ -63,23 +79,7 @@
     public function atacar( Unidad $oponente ) {
        show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
 
-       # Valida si el oponente es un Soldado
-       if( $oponente instanceof Soldado ) {
-         # Si es 'Soldado' el daño se reduce a la mitad
-         $dano = $this -> puntosDanio / 2;
-       }
-       else {
-         # Si es cualquier otro el daño recibido es completo
-         $dano = $this -> puntosDanio;
-       }
-
-       # Fija el valor de puntos después de un ataque
-       $oponente -> setPuntos( $oponente -> getPuntos() - $dano );
-
-       # Valida si el oponente aún tiene puntos
-       if( $oponente -> getPuntos() <= 0 ) {
-          $oponente -> muere();
-       }
+       $oponente -> danoOcasionado( $this -> puntosDanio );
 
     }
   }
