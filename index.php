@@ -58,10 +58,15 @@
 
   # Clase Hijo hereda de la clase 'Unidad'
   class Soldado extends Unidad {
+    /* Propiedades (Atributos) */
+    private $puntosDanio = 40;
+
     /* Métodos (Acciones) */
     public function atacar( Unidad $oponente ) {
        show( "$this->nombre corta a {$oponente->getNombre()} en dos" );
-       $oponente -> muere();
+
+       $oponente -> danoOcasionado( $this -> puntosDanio );
+
     }
 
     public function danoOcasionado( $puntosDanio ) {
@@ -91,6 +96,7 @@
   $jhonny = new Arquero( 'Cortes' );
   $jhonny -> atacar( $bryan );
   $jhonny -> atacar( $bryan );
+  $bryan -> atacar( $jhonny );
 
   # Función para evitar la duplicación del código (definición de los tags de párrafo y el echo)
   function show( $mensaje ) {
