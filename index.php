@@ -59,7 +59,14 @@
   # Clase Hijo hereda de la clase 'Unidad'
   class Soldado extends Unidad {
     /* Propiedades (Atributos) */
-    private $puntosDanio = 40;
+    private $puntosDanio = 40,
+            $armadura = 2;
+
+    /* Constructor */
+    public function __construct( $nombre, $armadura = 2 ) {
+      $this -> armadura = $armadura;
+      parent :: __construct( $nombre );
+    }
 
     /* Métodos (Acciones) */
     public function atacar( Unidad $oponente ) {
@@ -71,7 +78,7 @@
 
     public function danoOcasionado( $puntosDanio ) {
       # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: ) y como es un 'Soldado' pasamos la mitad del daño
-      return parent :: danoOcasionado( $puntosDanio / 2 );
+      return parent :: danoOcasionado( $puntosDanio / $this -> armadura );
     }
   }
 
@@ -99,7 +106,7 @@
   }
 
   # Instancia con la nueva clase 'Soldado'
-  $bryan = new Soldado( 'Muñoz' );
+  $bryan = new Soldado( 'Muñoz', 3 );
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
