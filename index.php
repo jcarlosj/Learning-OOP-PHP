@@ -28,7 +28,7 @@
     /* Hacemos que el método sea genérico, es decir, le indicamos que como 'Unidad'
       debe realizar un ataque pero no especificamos que tipo de ataque. Esto obliga
       a que el comportamiento sea definido en las clases hijas */
-    abstract public function atacar( $oponente );
+    abstract public function atacar( Unidad $oponente );
 
     public function muere() {
       show( "$this->nombre muere" );
@@ -39,7 +39,7 @@
   # Clase Hijo hereda de la clase 'Unidad'
   class Soldado extends Unidad {
     /* Métodos (Acciones) */
-    public function atacar( $oponente ) {
+    public function atacar( Unidad $oponente ) {
        show( "$this->nombre corta a {$oponente->getNombre()} en dos" );
        $oponente -> muere();
     }
@@ -48,7 +48,7 @@
   # Clase Hijo hereda de la clase 'Unidad'
   class Arquero extends Unidad {
     /* Métodos (Acciones) */
-    public function atacar( $oponente ) {
+    public function atacar( Unidad $oponente ) {
        show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
        $oponente -> muere();
     }
