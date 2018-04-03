@@ -63,8 +63,18 @@
     public function atacar( Unidad $oponente ) {
        show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
 
+       # Valida si el oponente es un Soldado
+       if( $oponente instanceof Soldado ) {
+         # Si es 'Soldado' el daño se reduce a la mitad
+         $dano = $this -> puntosDanio / 2;
+       }
+       else {
+         # Si es cualquier otro el daño recibido es completo
+         $dano = $this -> puntosDanio;
+       }
+
        # Fija el valor de puntos después de un ataque
-       $oponente -> setPuntos( $oponente -> getPuntos() - $this -> puntosDanio );
+       $oponente -> setPuntos( $oponente -> getPuntos() - $dano );
 
        # Valida si el oponente aún tiene puntos
        if( $oponente -> getPuntos() <= 0 ) {
