@@ -7,7 +7,7 @@
      de manera que no podrá ser instanciada si no a través de las clases hijas  */
   abstract class Unidad {
     /* Propiedades (Atributos) */
-    protected $vivo = true,
+    protected $puntosVida = 40,
               $nombre;
 
     /* Constructor */
@@ -18,6 +18,15 @@
     /* Getter */
     public function getNombre() {
       return $this -> nombre;
+    }
+
+    public function getPuntos() {
+      return $this -> puntosVida;
+    }
+
+    public function setPuntos( $puntosVida ) {
+      $this -> puntosVida = $puntosVida;
+      show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
     }
 
     /* Métodos (Acciones) */
@@ -47,10 +56,21 @@
 
   # Clase Hijo hereda de la clase 'Unidad'
   class Arquero extends Unidad {
+    /* Propiedades (Atributos) */
+    private $puntosDanio = 20;
+
     /* Métodos (Acciones) */
     public function atacar( Unidad $oponente ) {
        show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
-       $oponente -> muere();
+
+       # Fija el valor de puntos después de un ataque
+       $oponente -> setPuntos( $oponente -> getPuntos() - $this -> puntosDanio );
+
+       # Valida si el oponente aún tiene puntos
+       if( $oponente -> getPuntos() <= 0 ) {
+          $oponente -> muere();
+       }
+
     }
   }
 
@@ -59,6 +79,7 @@
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
+  $jhonny -> atacar( $bryan );
   $jhonny -> atacar( $bryan );
 
   # Función para evitar la duplicación del código (definición de los tags de párrafo y el echo)
