@@ -129,6 +129,15 @@
 
   }
 
+  # Clase 'Armadura Maldita' (mas bajo nivel de protección que la armadura de Bronce, duplica el daño) que implementa la interface de una Armadura
+  class ArmaduraMaldita implements Armadura {
+    /* Métodos (Acciones) */
+    public function absorberDanio( $danio ) {
+      return $danio * 2;
+    }
+
+  }
+
   # Interface Armadura 
   interface Armadura {
     public function absorberDanio( $danio );
@@ -139,8 +148,6 @@
            esta posea. Las Interfaces no pueden ser instanciadas. Las clases pueden 
            implementar una o mas interfaces */
 
-  # Instancia con la nueva clase 'ArmaduraPlata'
-  $armadura = new ArmaduraPlata;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
@@ -150,7 +157,7 @@
   $jhonny = new Arquero( 'Cortes' );
   $jhonny -> atacar( $bryan );
 
-  $bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
+  $bryan -> setArmadura( new ArmaduraMaldita ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
 
   $jhonny -> atacar( $bryan );
   $bryan -> atacar( $jhonny );
