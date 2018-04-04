@@ -24,11 +24,6 @@
       return $this -> puntosVida;
     }
 
-    private function setPuntos( $puntosVida ) {
-      $this -> puntosVida = $puntosVida;
-      show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
-    }
-
     /* Métodos (Acciones) */
     public function mover( $direccion ) {
       show( "$this->nombre avanza hacia el $direccion" );
@@ -41,13 +36,19 @@
 
     public function danoOcasionado( $puntosDanio ) {
 
-       # Fija el valor de puntos después de un ataque
-       $this -> setPuntos( $this -> puntosVida - $puntosDanio );
+      # Fija el valor de puntos después de un ataque
+      $this -> puntosVida = $this -> puntosVida - $this -> absorberDanio( $puntosDanio );
+      show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
 
        # Valida si el oponente aún tiene puntos
        if( $this -> puntosVida <= 0 ) {
           $this -> muere();
        }
+    }
+
+    protected function absorberDanio( $danio ) {
+
+        return $danio;
     }
 
     public function muere() {
@@ -75,16 +76,14 @@
        $oponente -> danoOcasionado( $this -> puntosDanio );
 
     }
-    
-    public function danoOcasionado( $puntosDanio ) {
 
-      # Valida si el soldado tiene una Armadura
-      if( $this -> armadura ) {
-        $puntosDanio = $this -> armadura -> absorberDanio( $puntosDanio );
-      }
+    protected function absorberDanio( $danio ) {
+        # Valida si el soldado tiene una Armadura
+        if( $this -> armadura ) {
+          $danio = $this -> armadura -> absorberDanio( $danio );
+        }
 
-      # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: ) y como es un 'Soldado' pasamos la mitad del daño
-      return parent :: danoOcasionado( $puntosDanio );
+        return $danio;
     }
 
     /* NOTA: Basado en el 1er Principio de la POO se le indica al objeto que hacer, a través de un comando o instrucción
@@ -108,17 +107,6 @@
        show( "$this->nombre dispara una flecha a {$oponente->getNombre()}" );
 
        $oponente -> danoOcasionado( $this -> puntosDanio );
-
-    }
-
-    public function danoOcasionado( $puntosDanio ) {
-      # Valida si es verdadero 1, o falso 0, lo que le permite repeler el daño aleatoriamente y sobrevivir
-      if( rand( 0, 1 ) ) {
-        # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: )
-        return parent :: danoOcasionado( $puntosDanio );
-      }
-
-      show( "$this->nombre pudo repeler el ataque" );
 
     }
   }
