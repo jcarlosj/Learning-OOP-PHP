@@ -120,6 +120,15 @@
 
   }
 
+  # Clase 'Armadura de Plata' (mas alto nivel de protección que la armadura de Bronce, absorbe la 2/3 del daño) que implementa la interface de una Armadura
+  class ArmaduraPlata implements Armadura {
+    /* Métodos (Acciones) */
+    public function absorberDanio( $danio ) {
+      return $danio / 3;
+    }
+
+  }
+
   # Interface Armadura 
   interface Armadura {
     public function absorberDanio( $danio );
@@ -130,8 +139,8 @@
            esta posea. Las Interfaces no pueden ser instanciadas. Las clases pueden 
            implementar una o mas interfaces */
 
-  # Instancia con la nueva clase 'ArmaduraBronce'
-  $armadura = new ArmaduraBronce;
+  # Instancia con la nueva clase 'ArmaduraPlata'
+  $armadura = new ArmaduraPlata;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
