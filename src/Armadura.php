@@ -1,4 +1,6 @@
 <?php
+  namespace Juego;
+
 # Interface Armadura 
   interface Armadura {
     public function absorberDanio( $danio );

@@ -4,8 +4,11 @@
 
   # Implementa el 'autoload' pasando como argumento un 'CallBack' 
   spl_autoload_register( function ( $nombreClase ) {
-    # Importa archivo
-    require "src/{$nombreClase}.php";
+    # Valida si el archivo existe 
+    if( file_exists( "src/{$nombreClase}.php" ) ) {
+      require "src/{$nombreClase}.php";                 # Importa archivo
+    }
+
   });
 
   $armadura = new ArmaduraBronce;

@@ -1,4 +1,6 @@
 <?php 
+  namespace Juego;
+
   /* Clase Padre
      Como esta clase es en sí un concepto genérico de lo que se desea representar.
      No representa nada concreto entonces la declaramos como una clase abstracta,
