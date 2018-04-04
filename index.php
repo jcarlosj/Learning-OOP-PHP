@@ -52,6 +52,7 @@
 
     public function muere() {
       show( "$this->nombre muere" );
+      exit();
     }
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
   }
@@ -63,7 +64,7 @@
             $armadura = 2;
 
     /* Constructor */
-    public function __construct( $nombre, $armadura = 2 ) {
+    public function __construct( $nombre, Armadura $armadura = null ) {
       $this -> armadura = $armadura;
       parent :: __construct( $nombre );
     }
@@ -77,9 +78,19 @@
     }
 
     public function danoOcasionado( $puntosDanio ) {
+
+      # Valida si el soldado tiene una Armadura
+      if( $this -> armadura ) {
+        $puntosDanio = $this -> armadura -> absorberDanio( $puntosDanio );
+      }
+
       # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: ) y como es un 'Soldado' pasamos la mitad del daño
-      return parent :: danoOcasionado( $puntosDanio / $this -> armadura );
+      return parent :: danoOcasionado( $puntosDanio );
     }
+
+    /* NOTA: Basado en el 1er Principio de la POO se le indica al objeto que hacer, a través de un comando o instrucción
+             evitando crear cadenas de condicionales donde se pregunte por una información obtenida y se actue de acuerdo 
+             a esta haciendo uso de lo que llamamos 'Procedimientos estructurados' */
   }
 
   # Clase Hijo hereda de la clase 'Unidad'
@@ -105,8 +116,17 @@
     }
   }
 
+  # Clase 
+  class Armadura {
+    /* Métodos (Acciones) */
+    public function absorberDanio( $danio ) {
+      return $danio / 2;
+    }
+
+  }
+
   # Instancia con la nueva clase 'Soldado'
-  $bryan = new Soldado( 'Muñoz', 3 );
+  $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
