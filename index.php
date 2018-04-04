@@ -65,7 +65,7 @@
 
     /* Constructor */
     public function __construct( $nombre, Armadura $armadura = null ) {
-      $this -> armadura = $armadura;
+      $this -> armadura = $this -> setArmadura( $armadura );
       parent :: __construct( $nombre );
     }
 
@@ -76,7 +76,7 @@
        $oponente -> danoOcasionado( $this -> puntosDanio );
 
     }
-
+    
     public function danoOcasionado( $puntosDanio ) {
 
       # Valida si el soldado tiene una Armadura
@@ -91,6 +91,12 @@
     /* NOTA: Basado en el 1er Principio de la POO se le indica al objeto que hacer, a través de un comando o instrucción
              evitando crear cadenas de condicionales donde se pregunte por una información obtenida y se actue de acuerdo 
              a esta haciendo uso de lo que llamamos 'Procedimientos estructurados' */
+
+    # Setter
+    # Asignar una Armadura al Soldado
+    public function setArmadura( Armadura $armadura = null ) {
+      $this -> armadura = $armadura;
+    }         
   }
 
   # Clase Hijo hereda de la clase 'Unidad'
@@ -128,13 +134,16 @@
   # Instancia con la nueva clase 'Armadura'
   $armadura = new Armadura;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
-  $bryan = new Soldado( 'Muñoz', $armadura ); # Con Armadura
+  $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
      la clase 'Soldado' depende de la clase 'Armadura' (para protegerse de un ataque) */
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
   $jhonny -> atacar( $bryan );
+
+  $bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
+
   $jhonny -> atacar( $bryan );
   $bryan -> atacar( $jhonny );
 
