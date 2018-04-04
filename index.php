@@ -111,8 +111,8 @@
     }
   }
 
-  # Clase 
-  class Armadura {
+  # Clase 'Armadura de Bronce' (básica de bajo nivel de protección, absorbe la 1/2 del daño) que implementa la interface de una Armadura
+  class ArmaduraBronce implements Armadura {
     /* Métodos (Acciones) */
     public function absorberDanio( $danio ) {
       return $danio / 2;
@@ -120,8 +120,18 @@
 
   }
 
-  # Instancia con la nueva clase 'Armadura'
-  $armadura = new Armadura;
+  # Interface Armadura 
+  interface Armadura {
+    public function absorberDanio( $danio );
+  }
+  /* NOTA: Las interfaces no poseen ningún tipo de lógica, son como contratos donde 
+           se le indica que cosas debe hacer de forma estricta, en este caso cualquier
+           clase que implemente esta interface debe definir los atributos y métodos que 
+           esta posea. Las Interfaces no pueden ser instanciadas. Las clases pueden 
+           implementar una o mas interfaces */
+
+  # Instancia con la nueva clase 'ArmaduraBronce'
+  $armadura = new ArmaduraBronce;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
