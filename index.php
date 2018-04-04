@@ -6,6 +6,9 @@
 
   # Implementa el 'autoload' pasando como argumento un 'CallBack' 
   spl_autoload_register( function ( $nombreClase ) {
+
+    show( "Intentando cargar: $nombreClase" );
+
     # Valida si el prefijo de la clase es 'Juego' el nombre del 'namespace' 
     if( strpos( $nombreClase, 'Juego\\' ) === 0 ) {
 
