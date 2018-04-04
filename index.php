@@ -1,7 +1,6 @@
 <?php
   /* Programación orientada a objetos */
-  use Juego\ArmaduraBronce;
-  use Juego\Arquero;
+  namespace Juego;
 
   require 'src/helpers.php';
 
@@ -28,7 +27,7 @@
 
   $armadura = new ArmaduraBronce;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
-  $bryan = new Juego\Soldado( 'Muñoz' ); # Sin Armadura
+  $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
      la clase 'Soldado' depende de la clase 'Armadura' (para protegerse de un ataque) */
 
