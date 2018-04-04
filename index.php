@@ -4,7 +4,8 @@
 
   # Implementa el 'autoload' pasando como argumento un 'CallBack' 
   spl_autoload_register( function ( $nombreClase ) {
-    exit( $nombreClase );
+    # Importa archivo
+    require "src/{$nombreClase}.php";
   });
 
   $armadura = new ArmaduraBronce;
