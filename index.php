@@ -3,6 +3,7 @@
   namespace Juego;
 
   require 'src/helpers.php';
+  require 'vendor/Armadura.php';      # Requiere de forma manual ya que 'autoload' solo funciona para el 'namespace' actual
 
   # Implementa el 'autoload' pasando como argumento un 'CallBack' 
   spl_autoload_register( function ( $nombreClase ) {

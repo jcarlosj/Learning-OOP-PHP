@@ -1,6 +1,8 @@
 <?php
   namespace Juego;
 
+  use Warcraft\Armadura;
+
   # Clase Hijo hereda de la clase 'Unidad'
   class Soldado extends Unidad {
     /* Propiedades (Atributos) */
