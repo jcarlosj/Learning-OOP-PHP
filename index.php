@@ -61,11 +61,10 @@
   class Soldado extends Unidad {
     /* Propiedades (Atributos) */
     private $puntosDanio = 40,
-            $armadura = 2;
+            $armadura;
 
     /* Constructor */
-    public function __construct( $nombre, Armadura $armadura = null ) {
-      $this -> armadura = $this -> setArmadura( $armadura );
+    public function __construct( $nombre ) {
       parent :: __construct( $nombre );
     }
 
@@ -118,6 +117,8 @@
         # Retorna el resultado del método 'danoOcasionado' de la clase padre (para eso se usa parent :: )
         return parent :: danoOcasionado( $puntosDanio );
       }
+
+      show( "$this->nombre pudo repeler el ataque" );
 
     }
   }
