@@ -1,0 +1,13 @@
+{
+    "name": "jcarlosj/poo-php",
+    "description": "Aprendiendo Programación Orientada a Objetos (Styde)",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Juan Carlos Jiménez Gutiérrez",
+            "email": "jcjimenez29@misena.edu.co"
+        }
+    ],
+    "require": {}
+}
