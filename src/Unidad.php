@@ -9,7 +9,8 @@
     /* Propiedades (Atributos) */
     protected $puntosVida = 40,
               $nombre,
-              $armadura;
+              $armadura,
+              $arma;
 
     /* Constructor */
     public function __construct( $nombre ) {
@@ -31,15 +32,20 @@
       $this -> armadura = $armadura;
     } 
 
+    # Asignar un Arma
+    public function setArma( Arma $arma = null ) {
+      $this -> arma = $arma;
+    } 
+
     /* Métodos (Acciones) */
     public function mover( $direccion ) {
       show( "$this->nombre avanza hacia el $direccion" );
     }
 
-    /* Hacemos que el método sea genérico, es decir, le indicamos que como 'Unidad'
-      debe realizar un ataque pero no especificamos que tipo de ataque. Esto obliga
-      a que el comportamiento sea definido en las clases hijas */
-    abstract public function atacar( Unidad $oponente );
+    public function atacar( Unidad $oponente ) {
+      show( $this -> arma -> getDescripcion( $this, $oponente ) );
+      $oponente -> danoOcasionado( $this -> arma -> getDanio()  );
+    }
 
     public function danoOcasionado( $puntosDanio ) {
 

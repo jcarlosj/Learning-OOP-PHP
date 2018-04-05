@@ -10,11 +10,11 @@
   $armadura = new ArmaduraBronce;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
-  /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
-     la clase 'Soldado' depende de la clase 'Armadura' (para protegerse de un ataque) */
+  $bryan -> setArma( new Armas\EspadaBasica );
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Arquero( 'Cortes' );
+  $jhonny -> setArma( new Armas\ArcoBasico );
   $jhonny -> atacar( $bryan );
 
   $bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
