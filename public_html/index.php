@@ -6,7 +6,7 @@
   require '../vendor/autoload.php';
   require '../src/helpers.php';
 
-  $armadura = new ArmaduraBronce;
+  $armadura = new Armaduras\ArmaduraBronce;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
