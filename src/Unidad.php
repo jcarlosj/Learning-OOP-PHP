@@ -1,6 +1,8 @@
 <?php 
   namespace Juego;
 
+  use Exception;      # Es una clase del espacio Global (debe importarse) o anteponer \ a la Excepción. Ej: throw new \Exception( 'Mensaje' ); 
+
   /* Clase Padre
      Como esta clase es en sí un concepto genérico de lo que se desea representar.
      No representa nada concreto entonces la declaramos como una clase abstracta,
@@ -43,6 +45,12 @@
     }
 
     public function atacar( Unidad $oponente ) {
+
+      # Valida si una unidad ataca sin tener un arma
+      if( !$this -> arma ) {
+        throw new Exception( 'La unidad no posee armas' );
+      }
+
       show( $this -> arma -> getDescripcion( $this, $oponente ) );
       $oponente -> danoOcasionado( $this -> arma -> getDanio()  );
     }
