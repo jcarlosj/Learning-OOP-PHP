@@ -8,7 +8,8 @@
   abstract class Unidad {
     /* Propiedades (Atributos) */
     protected $puntosVida = 40,
-              $nombre;
+              $nombre,
+              $armadura;
 
     /* Constructor */
     public function __construct( $nombre ) {
@@ -23,6 +24,12 @@
     public function getPuntos() {
       return $this -> puntosVida;
     }
+
+    # Setter
+    # Asignar una Armadura
+    public function setArmadura( Armadura $armadura = null ) {
+      $this -> armadura = $armadura;
+    } 
 
     /* Métodos (Acciones) */
     public function mover( $direccion ) {
@@ -47,6 +54,10 @@
     }
 
     protected function absorberDanio( $danio ) {
+        # Valida si el soldado tiene una Armadura
+        if( $this -> armadura ) {
+          $danio = $this -> armadura -> absorberDanio( $danio );
+        }
 
         return $danio;
     }
