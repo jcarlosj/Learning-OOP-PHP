@@ -1,5 +1,5 @@
 <?php
-  namespace Warcraft;
+  namespace Juego;
 
 # Interface Armadura 
   interface Armadura {
