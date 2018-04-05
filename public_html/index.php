@@ -6,7 +6,6 @@
 
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente) 
   require '../vendor/autoload.php';
-  require '../src/helpers.php';
 
   $armadura = new ArmaduraBronce;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
