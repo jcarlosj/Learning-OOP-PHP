@@ -2,11 +2,13 @@
   /* Programación orientada a objetos */
   namespace Juego;
 
+  use Juego\Armaduras\ArmaduraBronce;
+
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente) 
   require '../vendor/autoload.php';
   require '../src/helpers.php';
 
-  $armadura = new Armaduras\ArmaduraBronce;
+  $armadura = new ArmaduraBronce;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Soldado( 'Muñoz' ); # Sin Armadura
   /* Pasar como parámetro un objeto a otro se le llama Inyección de dependencias e indica que 
