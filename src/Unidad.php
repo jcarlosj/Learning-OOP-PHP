@@ -1,6 +1,8 @@
 <?php
   namespace Juego;
 
+  use Juego\Armaduras\SinArmadura;
+
   /* Clase Padre
      Como esta clase es en sí un concepto genérico de lo que se desea representar.
      No representa nada concreto entonces la declaramos como una clase abstracta,
@@ -16,6 +18,10 @@
     public function __construct( $nombre, Arma $arma ) {
       $this -> nombre = $nombre;
       $this -> arma = $arma;
+      $this -> armadura = new SinArmadura;        # 'SinArmadura' es como un objeto que actua como un 'placeholder' también se le conoce como 'Null Object'
+
+      /* NOTA: En este caso apesar de que estamos obligando a que cada instancia de Unidad instancie en su propiedad armadura un mismo objetos
+               no representa una mala práctica ya que el método 'setArmadura' nos da la flexibilidad para cambiar dicha instancia  */
     }
 
     /* Getter */
@@ -62,12 +68,8 @@
     }
 
     protected function absorberDanio( Ataque $ataque ) {
-        # Valida si el soldado tiene una Armadura
-        if( $this -> armadura ) {
-          return $this -> armadura -> absorberDanio( $ataque );
-        }
-
-        return $ataque -> getDanio();
+        
+       return $this -> armadura -> absorberDanio( $ataque );
     }
 
     public function muere() {

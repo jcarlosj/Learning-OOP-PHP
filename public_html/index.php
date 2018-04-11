@@ -10,7 +10,7 @@
   $armadura = new ArmaduraPlata;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Unidad( 'Muñoz', new Armas\EspadaBasica ); # Sin Armadura
-  $bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
+  #$bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego );
