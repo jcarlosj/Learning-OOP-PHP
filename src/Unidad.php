@@ -1,4 +1,4 @@
-<?php 
+<?php
   namespace Juego;
 
   /* Clase Padre
@@ -13,8 +13,9 @@
               $arma;
 
     /* Constructor */
-    public function __construct( $nombre ) {
+    public function __construct( $nombre, Arma $arma ) {
       $this -> nombre = $nombre;
+      $this -> arma = $arma;
     }
 
     /* Getter */
@@ -30,12 +31,12 @@
     # Asignar una Armadura
     public function setArmadura( Armadura $armadura = null ) {
       $this -> armadura = $armadura;
-    } 
+    }
 
     # Asignar un Arma
     public function setArma( Arma $arma ) {
       $this -> arma = $arma;
-    } 
+    }
 
     /* Métodos (Acciones) */
     public function mover( $direccion ) {

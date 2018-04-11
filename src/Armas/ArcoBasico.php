@@ -1,10 +1,9 @@
 <?php
     namespace Juego\Armas;
 
-    use Juego\Arma;
     use Juego\Unidad;
 
-    class ArcoBasico extends Arma {
+    class ArcoBasico extends Arco {
         /* Propiedades (Atributos) */
         protected $danio = 20;
 
