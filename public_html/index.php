@@ -13,7 +13,7 @@
   $bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
 
   # Instancia con la clase Padre 'Unidad'
-  $jhonny = new Unidad( 'Cortes', new Armas\Ballesta );
+  $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego );
   $jhonny -> atacar( $bryan );
   $jhonny -> atacar( $bryan );
   $bryan -> atacar( $jhonny );
