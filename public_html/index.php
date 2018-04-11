@@ -2,12 +2,12 @@
   /* Programación orientada a objetos */
   namespace Juego;
 
-  use Juego\Armaduras\ArmaduraBronce;
+  use Juego\Armaduras\ArmaduraPlata;
 
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
 
-  $armadura = new ArmaduraBronce;
+  $armadura = new ArmaduraPlata;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
   $bryan = new Unidad( 'Muñoz', new Armas\EspadaBasica ); # Sin Armadura
   $bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)

@@ -6,10 +6,6 @@
 
     class ArcoBasico extends Arma {
         /* Propiedades (Atributos) */
-        protected $danio = 20;
-
-        /* Métodos */
-        public function getDescripcion( Unidad $atacante, Unidad $oponente ) {
-            return "{$atacante->getNombre()} dispara una flecha a {$oponente->getNombre()}";
-        }
+        protected $danio = 20,
+                  $descripcion = ':unidad dispara una flecha a :oponente';    # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
     }

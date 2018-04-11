@@ -44,15 +44,15 @@
     }
 
     public function atacar( Unidad $oponente ) {
-
-      show( $this -> arma -> getDescripcion( $this, $oponente ) );
-      $oponente -> danoOcasionado( $this -> arma -> getDanio()  );
+      $ataque = $this -> arma -> crearAtaque();
+      show( $ataque -> getDescripcion( $this, $oponente ) );
+      $oponente -> danoOcasionado( $ataque  );
     }
 
-    public function danoOcasionado( $puntosDanio ) {
+    public function danoOcasionado( Ataque $ataque ) {
 
       # Fija el valor de puntos después de un ataque
-      $this -> puntosVida = $this -> puntosVida - $this -> absorberDanio( $puntosDanio );
+      $this -> puntosVida = $this -> puntosVida - $this -> absorberDanio( $ataque -> getDanio() );
       show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
 
        # Valida si el oponente aún tiene puntos
