@@ -5,7 +5,7 @@
      Como esta clase es en sí un concepto genérico de lo que se desea representar.
      No representa nada concreto entonces la declaramos como una clase abstracta,
      de manera que no podrá ser instanciada si no a través de las clases hijas  */
-  abstract class Unidad {
+  class Unidad {
     /* Propiedades (Atributos) */
     protected $puntosVida = 40,
               $nombre,
