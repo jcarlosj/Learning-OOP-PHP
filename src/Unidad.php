@@ -58,18 +58,13 @@
     public function danoOcasionado( Ataque $ataque ) {
 
       # Fija el valor de puntos después de un ataque
-      $this -> puntosVida = $this -> puntosVida - $this -> absorberDanio( $ataque );
+      $this -> puntosVida = $this -> puntosVida - $this -> armadura -> absorberDanio( $ataque );
       show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
 
        # Valida si el oponente aún tiene puntos
        if( $this -> puntosVida <= 0 ) {
           $this -> muere();
        }
-    }
-
-    protected function absorberDanio( Ataque $ataque ) {
-        
-       return $this -> armadura -> absorberDanio( $ataque );
     }
 
     public function muere() {
