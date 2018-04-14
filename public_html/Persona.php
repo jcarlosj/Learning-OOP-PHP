@@ -21,18 +21,22 @@ class Persona {
         return $this -> nombre;
     }
 
+    public function save() {
+        echo "<p>{$this->getNombre()} se ha guardado en la tabla <b>'" .static::$db_table. "'</b> de la base de datos <b>'" .static::$database. "'</b></p>";
+    }
+
 }
 
 /* Instancias */
 $melisa = new Persona( 'Melisa' );
-$alejandro = new Persona( 'Alejandro' );
+$melisa -> save();
 
-echo "<p>{$melisa->getNombre()} se ha guardado en la tabla <b>'" .Persona::$db_table. "'</b></p>";
-echo "<p>{$alejandro->getNombre()} se ha guardado en la tabla <b>'" .Persona::$db_table. "'</b></p>";
+$alejandro = new Persona( 'Alejandro' );
+$alejandro -> save();
 
 $juan_david = new Persona( 'Juan David' );
 Persona :: $db_table = 'desarrolladores';
-echo "<p>{$juan_david->getNombre()} se ha guardado en la tabla <b>'" .Persona::$db_table. "'</b></p>";
+$juan_david -> save();
 
 /* NOTA: Esto pasa por que la propiedad 'nombre' ya no está disponible como parte de cada instancia de cada objeto.
          Ahora es parte global de la clase como tal, no de las instancias de cada objeto que se pueda crear */
