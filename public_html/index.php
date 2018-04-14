@@ -6,13 +6,40 @@
 
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
-              
-  Traducir :: set([                                          # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
-      'AtaqueArcoBasico'   => ':unidad dispara una flecha a :oponente',
-      'AtaqueArcoDeFuego'  => ':unidad dispara una flecha de fuego a :oponente',
-      'AtaqueBallesta'     => ':unidad lanza una ballesta a :oponente',
-      'AtaqueEspadaBasica' => ':unidad ataca con la espada a :oponente'
-  ]);
+
+  # Define un valor para establecer el filtro de idioma (podría capturar y filtrar una URL, variable sesión o valor de la base de datos)
+  $idioma = 'en';
+
+  # Selecciona el idioma en el que se van a desplegar los mensajes
+  switch ( $idioma ) {
+       case 'en':
+           # Fija los mensajes para el idioma Inglés
+           Traducir :: set([                                          # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
+               'AtaqueArcoBasico'   => ':unidad shoots an arrow to :oponente',
+               'AtaqueArcoDeFuego'  => ':unidad fires a fire arrow at :oponente',
+               'AtaqueBallesta'     => ':unidad launches a crossbow to :oponente',
+               'AtaqueEspadaBasica' => ':unidad attacks with the sword a :oponente'
+           ]);
+           break;
+       case 'es':
+           # Fija los mensajes para el idioma Español
+           Traducir :: set([                                          # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
+               'AtaqueArcoBasico'   => ':unidad dispara una flecha a :oponente',
+               'AtaqueArcoDeFuego'  => ':unidad dispara una flecha de fuego a :oponente',
+               'AtaqueBallesta'     => ':unidad lanza una ballesta a :oponente',
+               'AtaqueEspadaBasica' => ':unidad ataca con la espada a :oponente'
+           ]);
+           break;
+       default:
+           # Fija los mensajes para el idioma Español
+           Traducir :: set([                                          # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
+               'AtaqueArcoBasico'   => ':unidad dispara una flecha a :oponente',
+               'AtaqueArcoDeFuego'  => ':unidad dispara una flecha de fuego a :oponente',
+               'AtaqueBallesta'     => ':unidad lanza una ballesta a :oponente',
+               'AtaqueEspadaBasica' => ':unidad ataca con la espada a :oponente'
+           ]);
+           break;
+   }
 
   $armadura = new ArmaduraPlata;
   # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
