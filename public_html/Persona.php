@@ -5,7 +5,18 @@
  */
 class Persona {
     /* Propiedades (Atributos) */
-    public static $nombre = 'Melisa';
+    protected static $nombre = 'Melisa';
+
+    /* Constructor */
+    public function __construct( $nombre ) {
+        static :: $nombre = $nombre;
+    }
+
+    /* Getter Static */
+    public static function getNombre() {
+        return static :: $nombre;
+    }
+
 }
 
-exit( Persona :: $nombre );
+exit( Persona :: getNombre() );        // Melisa
