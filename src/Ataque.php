@@ -5,13 +5,13 @@
         /* Propiedades (Atributos) */
         protected $danio,
                   $magico,
-                  $descripcion;
+                  $id_mensaje;
 
         /* Constructor */
-        public function __construct( $danio, $magico, $descripcion ) {
+        public function __construct( $danio, $magico, $id_mensaje ) {
           $this -> danio = $danio;
           $this -> magico = $magico;
-          $this -> descripcion = $descripcion;
+          $this -> id_mensaje = $id_mensaje;
         }
 
         /* Getters */
@@ -20,13 +20,15 @@
         }
 
         public function getDescripcion( Unidad $atacante, Unidad $oponente ) {
-            # Retorna los nombres del atacante y el oponente reemplazando los 'placeholder' encontrados en la cadena
-            return str_replace(
-                [ ':unidad', ':oponente' ],
-                [ $atacante -> getNombre(), $oponente -> getNombre() ],
-                $this -> descripcion
-            );
 
+            # Retorna descripción o mensaje descriptivo del ataque
+            return Traducir :: get(
+                $this -> id_mensaje,     # ID del mensaje
+                [                         # Parámetros
+                    'unidad'   => $atacante -> getNombre(),     # Nombre de la unidad atacante
+                    'oponente' => $oponente -> getNombre()      # Nombre de la unidad oponente
+                ]
+            );
 
         }
 

@@ -6,6 +6,5 @@
 
     class Ballesta extends Arma {
         /* Propiedades (Atributos) */
-        protected $danio = 40,
-                  $descripcion = ':unidad lanza una ballesta a :oponente';    # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
+        protected $danio = 40;
     }
