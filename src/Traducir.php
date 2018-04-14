@@ -3,13 +3,14 @@
 
     class Traducir {
         /* Propiedades (Atributos) */
-        protected static $mensajes = [                                          # Usamos 'Placeholder' (:unidad, :oponente) al adicionar los dos puntos
-            'AtaqueArcoBasico'   => ':unidad dispara una flecha a :oponente',
-            'AtaqueArcoDeFuego'  => ':unidad dispara una flecha de fuego a :oponente',
-            'AtaqueBallesta'     => ':unidad lanza una ballesta a :oponente',
-            'AtaqueEspadaBasica' => ':unidad ataca con la espada a :oponente'
-        ];
+        protected static $mensajes = [];
 
+        # Función estática para fijar mensajes
+        public static function set( array $mensajes ) {
+            static :: $mensajes = $mensajes;
+        }
+
+        # Función estática para obtener mensajes
         public static function get( $id_mensaje, array $parametros = array() ) {
 
             # Valida si el mensaje NO existe
@@ -20,7 +21,7 @@
             return static :: reemplazarParametros( static :: $mensajes[ $id_mensaje ], $parametros );
         }
 
-         # Función que Valida si el mensaje NO existe un mensaje
+         # Función estática que Valida si el mensaje NO existe un mensaje
          private static function has( $id_mensaje ) {
              return isset( static :: $mensajes[ $id_mensaje ] );
          }
