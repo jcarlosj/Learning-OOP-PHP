@@ -42,7 +42,7 @@
            break;
    }
 
-  $registro = new RegistradorHTML();
+  $registro = new RegistradorArchivo();
 
   /* Además de ser un Método Factory( por que fabrica instancias), también se le
      llama 'Named Constructor' (Constructor Semántico), en este caso a través
