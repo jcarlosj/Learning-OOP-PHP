@@ -11,7 +11,7 @@
      de manera que no podrá ser instanciada si no a través de las clases hijas  */
   class Unidad {
     /* Propiedades (Atributos) */
-    const PROJECT = 'Juego';
+    const PROJECT = 'Juego';        # Define la constante dentro de la clase
 
     protected $puntosVida = 40,
               $nombre,
