@@ -2,13 +2,13 @@
   /* Programación orientada a objetos */
   namespace Juego;
 
-  use Juego\Armaduras\ArmaduraPlata;
+  use Juego\Armaduras\ArmaduraBronce;
 
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
 
   # Define un valor para establecer el filtro de idioma (podría capturar y filtrar una URL, variable sesión o valor de la base de datos)
-  $idioma = 'en';
+  $idioma = 'es';
 
   # Selecciona el idioma en el que se van a desplegar los mensajes
   switch ( $idioma ) {
@@ -41,10 +41,10 @@
            break;
    }
 
-  $armadura = new ArmaduraPlata;
-  # Instancia con la nueva clase 'Soldado' e inyecta una dependiencia (el objeto armadura)
-  $bryan = new Unidad( 'Muñoz', new Armas\EspadaBasica ); # Sin Armadura
-  #$bryan -> setArmadura( $armadura ); # Con Armadura (Después del primer ataque el soldado recibe una armadura)
+  /* Además de ser un Método Factory( por que fabrica instancias), también se le
+     llama 'Named Constructor' (Constructor Semántico), en este caso a través
+     de un método estático */
+  $bryan = Unidad :: crearSoldado( 'Muñoz' );
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego );
@@ -53,4 +53,4 @@
   $bryan -> atacar( $jhonny );
 
   /* NOTA: Cada instancia debe hacerse colocando como prefijo el nombre del 'namespace'
-           en este caso 'Juego' seguigo de un 'Backslash' (Barra invertida \ ) */
+           en este caso 'Juego' seguido de un 'Backslash' (Barra invertida \ ) */

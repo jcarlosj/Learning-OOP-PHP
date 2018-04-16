@@ -2,6 +2,8 @@
   namespace Juego;
 
   use Juego\Armaduras\SinArmadura;
+  use Juego\Armaduras\ArmaduraBronce;
+  use Juego\Armas\EspadaBasica;
 
   /* Clase Padre
      Como esta clase es en sí un concepto genérico de lo que se desea representar.
@@ -37,6 +39,14 @@
     # Asignar una Armadura
     public function setArmadura( Armadura $armadura = null ) {
       $this -> armadura = $armadura;
+    }
+
+    # Crear soldado (Método Factory)
+    public static function crearSoldado( $nombre ) {
+        $soldado = new Unidad( $nombre, new EspadaBasica ); # Sin Armadura
+        $soldado -> setArmadura( new ArmaduraBronce );
+
+        return $soldado;
     }
 
     # Asignar un Arma
