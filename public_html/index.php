@@ -42,7 +42,7 @@
            break;
    }
 
-  $registro = new RegistradorArchivo();
+  $registro = new RegistradorHTML();
   Log :: setRegistrador( $registro );        # Inyecta la dependencia al 'Facade' (Fachada)
 
   /* Además de ser un Método Factory( por que fabrica instancias), también se le
