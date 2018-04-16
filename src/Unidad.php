@@ -39,6 +39,8 @@
     # Asignar una Armadura
     public function setArmadura( Armadura $armadura = null ) {
       $this -> armadura = $armadura;
+
+      return $this;    # Importante retornar la referencia del objeto al implementar la Interfaz Fluida
     }
 
     # Crear soldado (Método Factory)
@@ -52,6 +54,14 @@
     # Asignar un Arma
     public function setArma( Arma $arma ) {
       $this -> arma = $arma;
+
+      return $this;    # Importante retornar la referencia del objeto al implementar la Interfaz Fluida
+    }
+
+    # Asignar un Escudo
+    public function setEscudo() {
+
+      return $this;    # Importante retornar la referencia del objeto al implementar la Interfaz Fluida
     }
 
     /* Métodos (Acciones) */

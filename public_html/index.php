@@ -2,7 +2,8 @@
   /* Programación orientada a objetos */
   namespace Juego;
 
-  use Juego\Armaduras\ArmaduraBronce;
+  use Juego\Armaduras\ArmaduraPlata;
+  use Juego\Armas\EspadaBasica;
 
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
@@ -44,7 +45,10 @@
   /* Además de ser un Método Factory( por que fabrica instancias), también se le
      llama 'Named Constructor' (Constructor Semántico), en este caso a través
      de un método estático */
-  $bryan = Unidad :: crearSoldado( 'Muñoz' );
+  $bryan = Unidad :: crearSoldado( 'Muñoz' )
+                  -> setArma( new EspadaBasica )                # Implementa 'Fluent Interface' (Interfaz Fluida)
+                  -> setArmadura( new ArmaduraPlata )
+                  -> setEscudo();
 
   # Instancia con la clase Padre 'Unidad'
   $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego );
