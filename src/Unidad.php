@@ -14,15 +14,13 @@
     protected $puntosVida = 40,
               $nombre,
               $armadura,
-              $arma,
-              $registrador;
+              $arma;
 
     /* Constructor */
-    public function __construct( $nombre, Arma $arma, $registrador ) {
+    public function __construct( $nombre, Arma $arma ) {
       $this -> nombre = $nombre;
       $this -> arma = $arma;
       $this -> armadura = new SinArmadura;        # 'SinArmadura' es como un objeto que actua como un 'placeholder' también se le conoce como 'Null Object'
-      $this -> registrador = $registrador;
 
       /* NOTA: En este caso apesar de que estamos obligando a que cada instancia de Unidad instancie en su propiedad armadura un mismo objetos
                no representa una mala práctica ya que el método 'setArmadura' nos da la flexibilidad para cambiar dicha instancia  */
@@ -46,8 +44,8 @@
     }
 
     # Crear soldado (Método Factory)
-    public static function crearSoldado( $nombre, $registrador ) {
-        $soldado = new Unidad( $nombre, new EspadaBasica, $registrador );
+    public static function crearSoldado( $nombre ) {
+        $soldado = new Unidad( $nombre, new EspadaBasica );
         $soldado -> setArmadura( new ArmaduraBronce );
 
         return $soldado;
@@ -68,12 +66,12 @@
 
     /* Métodos (Acciones) */
     public function mover( $direccion ) {
-      $this -> registrador -> info( "$this->nombre avanza hacia el $direccion" );
+      Log :: info( "$this->nombre avanza hacia el $direccion" );
     }
 
     public function atacar( Unidad $oponente ) {
       $ataque = $this -> arma -> crearAtaque();
-      $this -> registrador -> info( $ataque -> getDescripcion( $this, $oponente ) );
+      Log :: info( $ataque -> getDescripcion( $this, $oponente ) );
       $oponente -> danoOcasionado( $ataque  );
     }
 
@@ -81,7 +79,7 @@
 
       # Fija el valor de puntos después de un ataque
       $this -> puntosVida = $this -> puntosVida - $this -> armadura -> absorberDanio( $ataque );
-      $this -> registrador -> info( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
+      Log :: info( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
 
        # Valida si el oponente aún tiene puntos
        if( $this -> puntosVida <= 0 ) {
@@ -90,7 +88,7 @@
     }
 
     public function muere() {
-      $this -> registrador -> info( "$this->nombre muere" );
+      Log :: info( "$this->nombre muere" );
       exit();
     }
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo

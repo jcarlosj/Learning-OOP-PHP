@@ -43,17 +43,18 @@
    }
 
   $registro = new RegistradorArchivo();
+  Log :: setRegistrador( $registro );        # Inyecta la dependencia al 'Facade' (Fachada)
 
   /* Además de ser un Método Factory( por que fabrica instancias), también se le
      llama 'Named Constructor' (Constructor Semántico), en este caso a través
      de un método estático */
-  $bryan = Unidad :: crearSoldado( 'Muñoz', $registro )
+  $bryan = Unidad :: crearSoldado( 'Muñoz' )
                   -> setArma( new EspadaBasica )                # Implementa 'Fluent Interface' (Interfaz Fluida)
                   -> setArmadura( new ArmaduraPlata )
                   -> setEscudo();
 
   # Instancia con la clase Padre 'Unidad'
-  $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego, $registro );
+  $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego );
   $jhonny -> atacar( $bryan );
   $jhonny -> atacar( $bryan );
   $bryan -> atacar( $jhonny );
