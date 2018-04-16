@@ -5,13 +5,31 @@
   use Juego\Armaduras\ArmaduraBronce;
   use Juego\Armas\EspadaBasica;
 
+  # Implementa esta clase suponiendo que existen pocos roles y son estáticos dentro del sistema
+  class Usuario {
+      /* Propiedades (Atributos) */
+      const ROL_ADMINISTRADOR = 'admin';
+      const ROL_EDITOR = 'editor';
+      const ROL_SUBSCRIPTOR = 'subscriptor';
+
+      public function is( $rol ) {
+          return $rol == 'admin';
+      }
+  }
+
+  $usuario = new Usuario;
+
+  if( $usuario -> is( Usuario :: ROL_ADMINISTRADOR ) ) {
+    echo '<p style="color: red;">Es Administrador del sistema</p>';
+  }
+
   /* Clase Padre
      Como esta clase es en sí un concepto genérico de lo que se desea representar.
      No representa nada concreto entonces la declaramos como una clase abstracta,
      de manera que no podrá ser instanciada si no a través de las clases hijas  */
   class Unidad {
     /* Propiedades (Atributos) */
-    const DANIO_MAXIMO = 100;
+    const DANIO_MAXIMO = 100;        # En PHP > 7.1 las constantes van a poder definir visibilidad (protected o private)
 
     protected $puntosVida = 40,
               $nombre,
