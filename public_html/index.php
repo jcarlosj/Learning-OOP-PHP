@@ -11,7 +11,7 @@
   # Define un valor para establecer el filtro de idioma (podría capturar y filtrar una URL, variable sesión o valor de la base de datos)
   $idioma = 'es';
 
-  # Selecciona el idioma en el que se van a desplegar los mensajes
+  # Selecciona el idioma en el que se van a desplegar los mensajes (Puede monerse a un archivo de configuración)
   switch ( $idioma ) {
        case 'en':
            # Fija los mensajes para el idioma Inglés
@@ -42,8 +42,17 @@
            break;
    }
 
-  $registro = new RegistradorHTML();
-  Log :: setRegistrador( $registro );        # Inyecta la dependencia al 'Facade' (Fachada)
+
+   # Define un valor para establecer el filtro de idioma (podría capturar y filtrar una URL, variable sesión o valor de la base de datos)
+   $produccion = false;
+
+   # Selecciona si el proyecto está en modo de producción o no (Puede monerse a un archivo de configuración)
+   if( $produccion ) {
+        Log :: setRegistrador( new RegistradorArchivo );         # Inyecta la dependencia al 'Facade' (Fachada)
+   }
+   else {
+        Log :: setRegistrador( new RegistradorHTML );            # Inyecta la dependencia al 'Facade' (Fachada)
+   }
 
   /* Además de ser un Método Factory( por que fabrica instancias), también se le
      llama 'Named Constructor' (Constructor Semántico), en este caso a través
