@@ -1,0 +1,7 @@
+(2018-04-16 13:37:29) Cortes dispara una flecha de fuego a Muñoz
+(2018-04-16 13:37:29) Muñoz ahora tiene 30 puntos de vida
+(2018-04-16 13:37:29) Cortes dispara una flecha de fuego a Muñoz
+(2018-04-16 13:37:29) Muñoz ahora tiene 20 puntos de vida
+(2018-04-16 13:37:29) Muñoz ataca con la espada a Cortes
+(2018-04-16 13:37:29) Cortes ahora tiene 0 puntos de vida
+(2018-04-16 13:37:29) Cortes muere
