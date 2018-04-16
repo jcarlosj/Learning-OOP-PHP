@@ -42,16 +42,18 @@
            break;
    }
 
+  $registro = new RegistradorHTML();
+
   /* Además de ser un Método Factory( por que fabrica instancias), también se le
      llama 'Named Constructor' (Constructor Semántico), en este caso a través
      de un método estático */
-  $bryan = Unidad :: crearSoldado( 'Muñoz' )
+  $bryan = Unidad :: crearSoldado( 'Muñoz', $registro )
                   -> setArma( new EspadaBasica )                # Implementa 'Fluent Interface' (Interfaz Fluida)
                   -> setArmadura( new ArmaduraPlata )
                   -> setEscudo();
 
   # Instancia con la clase Padre 'Unidad'
-  $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego );
+  $jhonny = new Unidad( 'Cortes', new Armas\ArcoDeFuego, $registro );
   $jhonny -> atacar( $bryan );
   $jhonny -> atacar( $bryan );
   $bryan -> atacar( $jhonny );

@@ -4,7 +4,7 @@
     class RegistradorArchivo {
 
         # Función para evitar la duplicación del código
-        public static function info( $mensaje ) {
+        public function info( $mensaje ) {
             # Guarda el contenido del mensaje en un archivo
             file_put_contents(
                 __DIR__. '/../storage/log.txt',                      # Indica la ruta y la extensión del archivo que guardará los datos
