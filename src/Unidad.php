@@ -11,6 +11,8 @@
      de manera que no podrá ser instanciada si no a través de las clases hijas  */
   class Unidad {
     /* Propiedades (Atributos) */
+    const PROJECT = 'Juego';
+
     protected $puntosVida = 40,
               $nombre,
               $armadura,

@@ -8,6 +8,8 @@
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
 
+  exit( Unidad :: PROJECT );
+
   # Define un valor para establecer el filtro de idioma (podría capturar y filtrar una URL, variable sesión o valor de la base de datos)
   $idioma = 'es';
 
