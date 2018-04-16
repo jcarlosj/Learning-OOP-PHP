@@ -11,7 +11,7 @@
      de manera que no podrá ser instanciada si no a través de las clases hijas  */
   class Unidad {
     /* Propiedades (Atributos) */
-    const PROJECT = 'Juego';        # Define la constante dentro de la clase
+    const DANIO_MAXIMO = 100;
 
     protected $puntosVida = 40,
               $nombre,
@@ -38,6 +38,14 @@
     }
 
     # Setter
+    protected function setPuntos( $danio ) {
+        if( $danio > static :: DANIO_MAXIMO ) {
+          $danio = static :: DANIO_MAXIMO;          # Máximo daño que puede recibir una unidad por ataque
+        }
+
+        $this -> puntosVida = $this -> puntosVida - $danio;
+    }
+
     # Asignar una Armadura
     public function setArmadura( Armadura $armadura = null ) {
       $this -> armadura = $armadura;
@@ -80,7 +88,7 @@
     public function danoOcasionado( Ataque $ataque ) {
 
       # Fija el valor de puntos después de un ataque
-      $this -> puntosVida = $this -> puntosVida - $this -> armadura -> absorberDanio( $ataque );
+      $this -> setPuntos( $this -> armadura -> absorberDanio( $ataque ) );
       Log :: info( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
 
        # Valida si el oponente aún tiene puntos
