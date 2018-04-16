@@ -1,7 +1,7 @@
 <?php
     namespace Juego;
 
-    class RegistradorHTML {
+    class RegistradorHTML implements Registrador {
 
         # Función para evitar la duplicación del código
         public function info( $mensaje ) {

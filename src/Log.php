@@ -5,7 +5,7 @@
         /* Propiedades (Atributos) */
         protected static $registrador;
 
-        public static function setRegistrador( $registrador ) {
+        public static function setRegistrador( Registrador $registrador ) {
             static :: $registrador = $registrador;
         }
 
