@@ -14,6 +14,7 @@
             # Implementación del Patrón Factory (Fabrica)
             #   La lógica que nos permitió entender que esté patrón podría implementarse es entender que un Arma es capaz de producir múltiples ataques
             #   Lo que no forza a la instancia a limitar la funcionalidad, si no al contrario a ampliarla
+            Log :: info ( "Se lanza ataque!" );
             return new Ataque( $this -> danio, $this -> magico, $this -> getDescripcionID() );
         }
 
