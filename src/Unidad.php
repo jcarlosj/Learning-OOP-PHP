@@ -66,12 +66,12 @@
 
     /* Métodos (Acciones) */
     public function mover( $direccion ) {
-      show( "$this->nombre avanza hacia el $direccion" );
+      RegistradorHTML :: info( "$this->nombre avanza hacia el $direccion" );
     }
 
     public function atacar( Unidad $oponente ) {
       $ataque = $this -> arma -> crearAtaque();
-      show( $ataque -> getDescripcion( $this, $oponente ) );
+      RegistradorHTML :: info( $ataque -> getDescripcion( $this, $oponente ) );
       $oponente -> danoOcasionado( $ataque  );
     }
 
@@ -79,7 +79,7 @@
 
       # Fija el valor de puntos después de un ataque
       $this -> puntosVida = $this -> puntosVida - $this -> armadura -> absorberDanio( $ataque );
-      show( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
+      RegistradorHTML :: info( "$this->nombre ahora tiene $this->puntosVida puntos de vida" );
 
        # Valida si el oponente aún tiene puntos
        if( $this -> puntosVida <= 0 ) {
@@ -88,7 +88,7 @@
     }
 
     public function muere() {
-      show( "$this->nombre muere" );
+      RegistradorHTML :: info( "$this->nombre muere" );
       exit();
     }
     # NOTA: Las clases no deben imprimir mensajes, pero lo haremos para realizar el ejemplo
