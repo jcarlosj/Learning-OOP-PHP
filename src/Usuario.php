@@ -12,6 +12,11 @@
             $this -> atributos = $atributos;
         }
 
+        /* Obtiene todos las propiedades de la clase */
+        public function getAtributos() {
+            return $this -> atributos;
+        }
+
         /* Obtiene el valor de una propiedad */
         public function getAtributo( $nombre_propiedad ) {
 
@@ -21,10 +26,23 @@
             }
             # En caso de no existir el campo del 'Array' PHP por defecto retorna null
         }
+        /* Fija el valor de una propiedad */
+        public function setAtributo( $nombre_propiedad, $valor ) {
+
+            return $this -> atributos[ $nombre_propiedad ] = $valor;
+        }
 
         /* Métodos Mágicos de PHP */
         public function __get( $nombre_propiedad ) {
+
             return $this -> getAtributo( $nombre_propiedad );
-            /* NOTA: Es una buena práctica extraer la lógica de los métodos mágicos y delegarsela a un método corriente */
         }
+
+        public function __set( $nombre_propiedad, $valor ) {
+
+            return $this -> setAtributo( $nombre_propiedad, $valor );
+        }
+        /* NOTA: Es una buena práctica extraer la lógica de los métodos mágicos
+                 y delegarsela a un método corriente. Todos los métodos mágicos
+                 de PHP van precedidos de __ (dos guiones bajos)*/
     }

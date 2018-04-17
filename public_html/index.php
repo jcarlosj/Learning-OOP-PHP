@@ -13,8 +13,8 @@
       'primer_apellido'  => 'Giraldo'
   ]);
 
-  $usuario -> nombre_usuario = '@egiraldo';
-  echo '<pre>'; var_dump( $usuario ); echo '</pre>';
+  $usuario -> setAtributo( 'nombre_usuario', '@egiraldo' );
+  echo '<pre>'; var_dump( $usuario -> getAtributos() ); echo '</pre>';
   exit();
 
   # Despliega un atributo usando el método que contiene la lógica de validación para obtener el valor de una propiedad
