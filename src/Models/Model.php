@@ -24,10 +24,14 @@
         public function getAtributo( $nombre_propiedad ) {
 
             if( array_key_exists( $nombre_propiedad, $this -> atributos ) ) {
-                # En caso de existir el campo del 'Array' retornamos el valor contenido
-                return $this -> atributos[ $nombre_propiedad ];
+                # Obtener el valor contenido dentro del 'Array' de propiedades de la clase
+                $valor =  $this -> atributos[ $nombre_propiedad ];
             }
-            # En caso de no existir el campo del 'Array' PHP por defecto retorna null
+            else {
+                $valor = null;
+            }
+
+            return $valor;
         }
         /* Fija el valor de una propiedad */
         public function setAtributo( $nombre_propiedad, $valor ) {
