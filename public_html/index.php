@@ -9,8 +9,8 @@
 
   $usuario = new Usuario([
       # Crea 2 propiedades y asigna el valor
-      'primer_apellido'  => 'Giraldo',
-      'segundo_apellido' => ''
+      'primer_nombre'    => 'Elisa',
+      'primer_apellido'  => 'Giraldo'
   ]);
 
   echo "<p>Hola, {$usuario->primer_nombre} {$usuario->segundo_nombre} {$usuario->primer_apellido} {$usuario->segundo_apellido} Bienvenida!</p>";        # Despliega el valor de la propiedad creada dinámicamente
