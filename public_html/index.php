@@ -10,9 +10,12 @@
   $usuario = new Usuario([
       # Crea 2 propiedades y asigna el valor
       'primer_nombre'    => 'Elisa',
-      'primer_apellido'  => 'Giraldo',
-      'nombre_usuario'   => '@egiraldo'
+      'primer_apellido'  => 'Giraldo'
   ]);
+
+  $usuario -> nombre_usuario = '@egiraldo';
+  echo '<pre>'; var_dump( $usuario ); echo '</pre>';
+  exit();
 
   # Despliega un atributo usando el método que contiene la lógica de validación para obtener el valor de una propiedad
   echo "Nickname: {$usuario->getAtributo('nombre_usuario')}";
