@@ -1,6 +1,8 @@
 <?php
     namespace MetodosMagicos\Models;
 
+    use MetodosMagicos\Convertir;
+
     abstract class Model {
 
         /* Propiedades (Atributos) */
@@ -24,6 +26,13 @@
         public function getAtributo( $nombre_propiedad ) {
 
             $valor = $this -> getValorAtributo( $nombre_propiedad );
+
+            # Define el nombre del método 'Getter' dinámicamente
+            $metodo = 'get' .Convertir :: camelCase( $nombre_propiedad ). 'Atributo';
+
+            # Explora objeto para verificar si el método existe
+            echo '<p><b>Existe?</b> '; var_dump( method_exists( $this, $metodo ) ); echo '</p>';
+            exit( '<b>Nombre del Método Getter:</b> '. $metodo );
 
             return $valor;
         }
