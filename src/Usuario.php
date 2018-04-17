@@ -46,6 +46,11 @@
 
             return $this -> setAtributo( $nombre_propiedad, $valor );
         }
+
+        public function __isset( $nombre_propiedad ) {
+            # Valida si está definida una propiedad mágica            
+            return isset( $this -> atributos[ $nombre_propiedad ] );
+        }
         /* NOTA: Es una buena práctica extraer la lógica de los métodos mágicos
                  y delegarsela a un método corriente. Todos los métodos mágicos
                  de PHP van precedidos de __ (dos guiones bajos)*/
