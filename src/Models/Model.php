@@ -27,16 +27,25 @@
 
             $valor = $this -> getValorAtributo( $nombre_propiedad );
 
-            # Define el nombre del método 'Getter' dinámicamente
-            $metodo = 'get' .Convertir :: camelCase( $nombre_propiedad ). 'Atributo';
-
             # Verifica si el método existe en las clases hijas
-            if( method_exists( $this, $metodo ) ) {
+            if( $this -> hasGetMutator( $nombre_propiedad ) ) {
                 # Usamos el nombre variable $metodo para referirnos al método de la clase para llamarlo dinámicamente
-                return $this -> $metodo( $valor );
+                return $this -> mutateAttribute( $nombre_propiedad, $valor );        # Retorna el valor de la propiedad dinámica o mágica
             }
 
             return $valor;            // Si el método no existe, por que la propiedad tampoco existe retornará 'null'
+        }
+
+        /* Obtiene el valor del método 'Getter' dinámico existente */
+        protected function mutateAttribute( $nombre_propiedad, $valor ) {
+            # Define el nombre del método 'Getter' dinámicamente y obtiene el valor
+            return $this -> {'get' .Convertir :: camelCase( $nombre_propiedad ). 'Atributo'}( $valor );
+        }
+
+        /* Valida si existe un método 'Getter' que va a modificar dinámicamente el valor de una propiedad mágica */
+        protected function hasGetMutator( $nombre_propiedad ) {
+            # Define el nombre del método 'Getter' dinámicamente y verifica si dicho método existe
+            return method_exists( $this, 'get' .Convertir :: camelCase( $nombre_propiedad ). 'Atributo' );
         }
 
         protected function getValorAtributo( $nombre_propiedad ) {
