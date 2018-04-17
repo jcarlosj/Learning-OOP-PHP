@@ -16,6 +16,6 @@
 
         /* Métodos Mágicos de PHP */
         public function __get( $nombre_propiedad ) {
-            return "[$nombre_propiedad]";            # Propiedades Mágicas
+            return $this -> atributos[ $nombre_propiedad ];            # Propiedades Mágicas
         }
     }
