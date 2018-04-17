@@ -23,16 +23,21 @@
         /* Obtiene el valor de una propiedad */
         public function getAtributo( $nombre_propiedad ) {
 
-            if( array_key_exists( $nombre_propiedad, $this -> atributos ) ) {
-                # Obtener el valor contenido dentro del 'Array' de propiedades de la clase
-                $valor =  $this -> atributos[ $nombre_propiedad ];
-            }
-            else {
-                $valor = null;
-            }
+            $valor = $this -> getValorAtributo( $nombre_propiedad );
 
             return $valor;
         }
+
+        protected function getValorAtributo( $nombre_propiedad ) {
+            # Valida si el campo $nombre_propiedad existe en el 'Array' de atributos
+            if( array_key_exists( $nombre_propiedad, $this -> atributos ) ) {
+                # Obtener el valor contenido dentro del 'Array' de propiedades de la clase
+                return $this -> atributos[ $nombre_propiedad ];
+            }
+
+            return null;        # O eliminarlo ya que PHP retorna por defecto NULL
+        }
+
         /* Fija el valor de una propiedad */
         public function setAtributo( $nombre_propiedad, $valor ) {
 
