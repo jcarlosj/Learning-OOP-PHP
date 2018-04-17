@@ -6,6 +6,8 @@
     class Usuario {
         /* Propiedades (Atributos) */
         protected $atributos = [];
+        public $primer_nombre = 'Elisa';
+        public $segundo_nombre = 'María';
 
         /* Constructor */
         public function __construct( array $atributos = [] ) {
@@ -14,6 +16,6 @@
 
         /* Métodos Mágicos de PHP */
         public function __get( $nombre_propiedad ) {
-            return "[$nombre_propiedad]";
+            return "[$nombre_propiedad]";            # Propiedades Mágicas
         }
     }
