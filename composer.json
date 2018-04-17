@@ -11,11 +11,9 @@
     ],
     "require": {},
     "autoload": {
-        "files":[
-            "src/helpers.php"
-        ],
+        "files":[],
         "psr-4": {
-            "Juego\\": "src/"
+            "MetodosMagicos\\": "src/"
         }
     }
 }
