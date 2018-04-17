@@ -30,11 +30,13 @@
             # Define el nombre del método 'Getter' dinámicamente
             $metodo = 'get' .Convertir :: camelCase( $nombre_propiedad ). 'Atributo';
 
-            # Explora objeto para verificar si el método existe
-            echo '<p><b>Existe?</b> '; var_dump( method_exists( $this, $metodo ) ); echo '</p>';
-            exit( '<b>Nombre del Método Getter:</b> '. $metodo );
+            # Verifica si el método existe en las clases hijas
+            if( method_exists( $this, $metodo ) ) {
+                # Usamos el nombre variable $metodo para referirnos al método de la clase para llamarlo dinámicamente
+                return $this -> $metodo( $valor );
+            }
 
-            return $valor;
+            return $valor;            // Si el método no existe, por que la propiedad tampoco existe retornará 'null'
         }
 
         protected function getValorAtributo( $nombre_propiedad ) {
