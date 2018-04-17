@@ -57,6 +57,11 @@
 
             return $this -> hasAtributo( $nombre_propiedad );
         }
+
+        public function __unset( $nombre_propiedad ) {
+            # Eliminar propiedades mágicas específicas
+            unset( $this -> atributos[ $nombre_propiedad ] );
+        }
         /* NOTA: Es una buena práctica extraer la lógica de los métodos mágicos
                  y delegarsela a un método corriente. Todos los métodos mágicos
                  de PHP van precedidos de __ (dos guiones bajos)*/
