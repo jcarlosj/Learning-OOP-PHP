@@ -14,7 +14,7 @@
       'primer_apellido'  => 'Giraldo'
   ]);
 
-  $usuario -> setAtributo( 'nombre_usuario', '@egiraldo' );
+  #$usuario -> setAtributo( 'nombre_usuario', '@egiraldo' );
 
   # Despliega el solo el valor de la propiedades creada dinámicamente que son validas usando el método mágico de PHP '__get()'
   echo "<p>Hola, {$usuario->primer_nombre} {$usuario->segundo_nombre} {$usuario->primer_apellido} {$usuario->segundo_apellido} Bienvenida!</p>";
