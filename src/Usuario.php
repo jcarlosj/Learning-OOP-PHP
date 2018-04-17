@@ -14,9 +14,11 @@
 
         /* Métodos Mágicos de PHP */
         public function __get( $nombre_propiedad ) {
-            # Valida si esta definida la propiedad antes de retornar el valor
-            return isset( $this -> atributos[ $nombre_propiedad ] )            # Propiedades Mágicas
-                    ? $this -> atributos[ $nombre_propiedad ]                  # Si está definido retorna el valor
-                    : null;                                                    # Si NO está definido retorna null
+
+            if( array_key_exists( $nombre_propiedad, $this -> atributos ) ) {
+                # En caso de existir el campo del 'Array' retornamos el valor contenido
+                return $this -> atributos[ $nombre_propiedad ];
+            }
+            # En caso de no existir el campo del 'Array' PHP por defecto retorna null
         }
     }
