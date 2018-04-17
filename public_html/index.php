@@ -15,10 +15,12 @@
   ]);
 
   $usuario -> setAtributo( 'nombre_usuario', '@egiraldo' );
-  echo '<pre>'; var_dump( $usuario -> getAtributos() ); echo '</pre>';
-  exit();
 
-  # Despliega un atributo usando el método que contiene la lógica de validación para obtener el valor de una propiedad
-  echo "Nickname: {$usuario->getAtributo('nombre_usuario')}";
   # Despliega el solo el valor de la propiedades creada dinámicamente que son validas usando el método mágico de PHP '__get()'
   echo "<p>Hola, {$usuario->primer_nombre} {$usuario->segundo_nombre} {$usuario->primer_apellido} {$usuario->segundo_apellido} Bienvenida!</p>";
+
+  # Valida si el usuario tiene un Nickname y lo muestra en caso de tenerlo
+  if( isset( $usuario -> nombre_usuario ) ) {
+      # Despliega un atributo usando el método que contiene la lógica de validación para obtener el valor de una propiedad
+      echo "Nickname: {$usuario->getAtributo('nombre_usuario')}";
+  }
