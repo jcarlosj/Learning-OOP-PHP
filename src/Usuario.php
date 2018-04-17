@@ -6,8 +6,4 @@
     class Usuario extends Model {
 
         /**/
-        public function getPrimerNombreAtributo( $valor ) {
-
-            return $valor;
-        }
     }
