@@ -7,7 +7,8 @@
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
 
-  $usuario = new Usuario([
+  $usuario = new Usuario();
+  $usuario -> setAtributos([
       # Crea 2 propiedades y asigna el valor
       'primer_nombre'    => 'Elisa',
       'primer_apellido'  => 'Giraldo'

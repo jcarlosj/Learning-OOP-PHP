@@ -9,12 +9,16 @@
 
         /* Constructor */
         public function __construct( array $atributos = [] ) {
-            $this -> atributos = $atributos;
+            $this -> setAtributos( $atributos );
         }
 
         /* Obtiene todos las propiedades de la clase */
         public function getAtributos() {
             return $this -> atributos;
+        }
+        /* Fija todos las propiedadas de la clase a través de un 'Array' */
+        public function setAtributos( array $atributos = [] ) {
+            $this -> atributos = $atributos;
         }
 
         /* Obtiene el valor de una propiedad */
