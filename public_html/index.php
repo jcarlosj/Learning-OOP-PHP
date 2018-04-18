@@ -6,7 +6,10 @@
   require '../vendor/autoload.php';
 
   class UnaClase {
-      public function unMetodo() {}
+      /* Métodos Mágicos (Sobre carga) */
+      public function __call( $metodo, array $args = [] ) {
+          echo '<pre>'; var_dump( $metodo, $args ); echo '</pre>';
+      }
   }
 
   $unObjeto = new UnaClase;     # Instancia la clase
