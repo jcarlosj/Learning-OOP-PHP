@@ -6,12 +6,12 @@
   require '../vendor/autoload.php';
 
   # Instancia
-  $elemento = ( new NodoHTML(
-      'textarea',                    # Tipo de elemento
-      'Escriba un mensaje aquí'      # Contenido del elemento
-      )
-  ) -> name( 'descripcion' );        # Implementa interface fluida
+  $elemento = ( new NodoHTML( 'textarea', 'Borre este texto' ))
+              -> name( 'descripcion' )                      # Implementa interface fluida
+              -> id( 'descripcion' )                        # Agrega nueva propiedad
+              -> class( 'mensajes' )                        # Agrega nueva propiedad
+              -> placeholder( 'Escriba un mensaje aquí' );  # Agrega nueva propiedad
 
 # Agrega atributo 'name' al elemento HTML, invocando al método inexistente 'name'
   echo $elemento -> render();
-  echo '<pre>'; var_dump( $elemento ); echo '</pre>';
+  echo '<br /><pre>'; var_dump( $elemento ); echo '</pre>';
