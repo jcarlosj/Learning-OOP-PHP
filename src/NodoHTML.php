@@ -17,7 +17,9 @@
 
         /* Métodos mágicos */
         public function __call( $metodo, array $args = array() ) {
-            $this -> attributes[ $metodo ] = $args[ 0 ];           
+            $this -> attributes[ $metodo ] = $args[ 0 ];
+
+            return $this;        # Escencial para crear Interfaces Fluidas           
         }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
