@@ -5,17 +5,27 @@
     class NodoHTML {
         /* Propiedades (Atributos) */
         protected $tag;
+        protected $content;
         protected $attributes = array();
 
         /* Constructor */
-        public function __construct( $tag, array $attributes = [] ) {
+        public function __construct( $tag, $content = null, array $attributes = [] ) {
             $this -> tag = $tag;
+            $this -> content = $content;
             $this -> attributes = $attributes;
         }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
         public function render() {
-            return "<$this->tag {$this->encadenarAtributos()}>";
+            $resultado = "<$this->tag {$this->encadenarAtributos()}>";
+
+            # Valida si existe contenido (si es diferente de 'null')
+            if( $this -> content != null ) {
+                $resultado .= $this -> content;
+                $resultado .= "</{$this->tag}>";
+            }
+
+            return $resultado;
         }
 
         /* Convierte un objeto en una cadena */

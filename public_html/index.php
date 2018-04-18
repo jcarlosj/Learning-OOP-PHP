@@ -6,8 +6,9 @@
   require '../vendor/autoload.php';
 
   $elemento = new NodoHTML(
-      'input',                        # Tipo de elemento
-      [                               # 'Array' con las propiedades del elemento 
+      'textarea',                     # Tipo de elemento
+      'Escriba un mensaje aquí',      # Contenido del elemento
+      [                               # 'Array' con las propiedades del elemento
           'name' => 'primer_nombre',
           'type' => 'text'
       ]
