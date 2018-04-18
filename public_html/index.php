@@ -5,18 +5,13 @@
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
 
-  class UnaClase {
-      /* Métodos Mágicos (Sobre carga) */
-      public function __call( $metodo, array $args = [] ) {
-          echo '<pre>'; var_dump( $metodo, $args ); echo '</pre>';
-      }
+  $elemento = new NodoHTML(
+      'input',                        # Tipo de elemento
+      [                               # 'Array' con las propiedades del elemento 
+          'name' => 'primer_nombre',
+          'type' => 'text'
+      ]
+  );
 
-      public static function __callStatic( $metodo, array $args = [] ) {        # Este método mágico debe ser 'public' y 'static' para poder funcionar adecuadamente
-          echo '<pre>'; var_dump( $metodo, $args ); echo '</pre>';
-      }
-  }
-
-  $unObjeto = new UnaClase;                        # Instancia la clase
-  $unObjeto -> unMetodo( 'Pasa', 'argumentos' );   # Invoca un método que no existe en la clase
-
-  UnaClase :: unMetodoEstatico( 'Pasa', 'los', 'argumentos' );    # Invoca un método estático que no existe en la clase
+  echo $elemento -> render();
+  echo '<pre>'; var_dump( $elemento ); echo '</pre>';
