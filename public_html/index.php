@@ -10,6 +10,10 @@
       public function __call( $metodo, array $args = [] ) {
           echo '<pre>'; var_dump( $metodo, $args ); echo '</pre>';
       }
+
+      public static function __callStatic( $metodo, array $args = [] ) {        # Este método mágico debe ser 'public' y 'static' para poder funcionar adecuadamente
+          echo '<pre>'; var_dump( $metodo, $args ); echo '</pre>';
+      }
   }
 
   $unObjeto = new UnaClase;                        # Instancia la clase
