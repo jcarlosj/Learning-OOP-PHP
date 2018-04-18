@@ -12,5 +12,5 @@
       }
   }
 
-  $unObjeto = new UnaClase;     # Instancia la clase
-  $unObjeto -> unMetodo();      # Invoca un método que no existe en la clase
+  $unObjeto = new UnaClase;                        # Instancia la clase
+  $unObjeto -> unMetodo( 'Pasa', 'argumentos' );   # Invoca un método que no existe en la clase
