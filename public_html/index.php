@@ -7,7 +7,7 @@
 
   # Instancia
   $elemento = ( new NodoHTML( 'textarea', 'Borre este texto' ))
-              -> name( 'descripcion' )                      # Implementa interface fluida
+              -> name()                                     # Elimina el parámetro (para inducir al error)
               -> id( 'descripcion' )                        # Agrega nueva propiedad
               -> class( 'mensajes' )                        # Agrega nueva propiedad
               -> placeholder( 'Escriba un mensaje aquí' );  # Agrega nueva propiedad

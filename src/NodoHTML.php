@@ -17,9 +17,16 @@
 
         /* Métodos mágicos */
         public function __call( $metodo, array $args = array() ) {
+
+            # Validamos que se recibe al menos un argumento
+            if( ! isset( $args[ 0 ] ) ) {
+                # Si no recibe dicho argumento crea una Excepción (Personaliza mensaje)
+                throw new \Exception( "Olvidó pasar el valor al atributo {$metodo} ", 1 );
+            }
+
             $this -> attributes[ $metodo ] = $args[ 0 ];
 
-            return $this;        # Escencial para crear Interfaces Fluidas           
+            return $this;        # Escencial para crear Interfaces Fluidas
         }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
