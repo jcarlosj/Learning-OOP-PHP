@@ -15,6 +15,11 @@
             $this -> attributes = $attributes;
         }
 
+        /* Métodos mágicos */
+        public function __call( $metodo, array $args = array() ) {
+            $this -> attributes[ $metodo ] = $args[ 0 ];           
+        }
+
         /* Devuelte el elemento HTML estructuralmente conformado */
         public function render() {
             $resultado = "<$this->tag {$this->encadenarAtributos()}>";
