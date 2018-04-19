@@ -12,12 +12,15 @@
   $paulaAndrea = new Usuario([ 'nombre' => 'Paula Andrea' ]);
 
   # Lonchera es ahora una instancia
-  $lonchera = new Lonchera([ 'emparedado', 'manzana' ]);    # Objeto Original
+  $lonchera = new Lonchera([ 'emparedado', 'manzana' ]);    # Objeto 1:
 
   # Asigna el almuerzo de la lonchera a los Hermanos (la misma lonchera)
-  $juliana -> setAlmuerzo( $lonchera );            # Objeto Original: Paso parámetro por referencia (del objeto original) por eso se afecta aquí
-  $paulaAndrea -> setAlmuerzo( $lonchera );        # Objeto Original: Paso parámetro por referencia (del objeto original) por eso se afecta aquí
+  $juliana -> setAlmuerzo( clone( $lonchera ) );            # Objeto 2: Paso parámetro por valor (objeto copia del original)
+  $paulaAndrea -> setAlmuerzo( clone( $lonchera ) );        # Objeto 3: Paso parámetro por valor (objeto copia del original)
 
   # Las Alumnas comen el almuerzo
   $juliana -> come();
+  $juliana -> come();
   $paulaAndrea -> come();
+
+  echo '<pre><b>Lonchera Original:</b> '; var_dump( $lonchera ); echo '</pre>';
