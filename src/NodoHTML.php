@@ -37,6 +37,11 @@
 
             return new NodoHTML( $metodo, $content, $attributes );
         }
+        /* Convierte un objeto en una cadena */
+        public function __toString() {
+            
+            return "[NodoHtml]";
+        }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
         public function render() {

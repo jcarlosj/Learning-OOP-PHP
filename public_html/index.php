@@ -17,7 +17,7 @@
 
 # Agrega atributo 'name' al elemento HTML, invocando al método inexistente 'name'
   echo $elemento -> render();
-  echo '<br /><pre>'; var_dump( $elemento ); echo '</pre>';
+  #echo '<br /><pre>'; var_dump( $elemento ); echo '</pre>';
 
   echo '<h3>Forma 2</h3><p>Método estático e interface fluída</p>';
   # Método estático
@@ -27,5 +27,6 @@
                   -> placeholder( 'Escriba una breve descripción personal' );
 
   # Agrega atributo 'name' al elemento HTML, invocando al método inexistente 'name'
-    echo $elemento2 -> render();
-    echo '<br /><pre>'; var_dump( $elemento2 ); echo '</pre>';
+    echo $elemento2;
+    echo "<p>Y el programa continua...</p>";
+    #echo '<br /><pre>'; var_dump( $elemento2 ); echo '</pre>';
