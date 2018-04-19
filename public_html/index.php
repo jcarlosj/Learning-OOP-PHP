@@ -11,10 +11,10 @@
   $juliana = new Usuario([ 'nombre' => 'Juliana' ]);
   $paulaAndrea = new Usuario([ 'nombre' => 'Paula Andrea' ]);
 
-  # Lonchera
-  $lonchera = [ 'emparedado' ];
+  # Lonchera es ahora una instancia
+  $lonchera = new Lonchera([ 'emparedado' ]);
 
-  # Asigna el almuerzo de la lonchera a los Hermanos
+  # Asigna el almuerzo de la lonchera a los Hermanos (la misma lonchera)
   $juliana -> setAlmuerzo( $lonchera );
   $paulaAndrea -> setAlmuerzo( $lonchera );
 

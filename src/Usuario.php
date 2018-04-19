@@ -8,8 +8,15 @@
         /* Propiedades (Atributos)*/
         protected $almuerzo;
 
+        /* Constructor */
+        public function __construct( array $atributos = [] ) {
+            parent :: __construct( $atributos );        # Invoca al constructor de la clase padre (Model)
+
+            $this -> almuerzo = new Lonchera();         # Instancia el objeto 'Null Object'
+        }
+
         /* Asigna el almuerzo a un usuario */
-        public function setAlmuerzo( $almuerzo ) {
+        public function setAlmuerzo( Lonchera $almuerzo ) {
             $this -> almuerzo = $almuerzo;
         }
 
@@ -17,13 +24,12 @@
         public function come() {
 
             /* NOTA: Es importante dejar las validaciones y/o Excepciones en la primera parte de cada método que la requiera */
-            if( empty( $this -> almuerzo ) ) {
+            if( $this -> almuerzo -> isEmpty() ) {
                 throw new \Exception( "{$this->getAtributo('nombre')} no tiene nada para comer :( ", 1);
             }
 
             /* Despúes Lógica */
-            $comida = array_shift( $this -> almuerzo );                        # 'array_shift' función de PHP para extraer y eliminar el primer elemento de un 'Array'
-            echo "<p>{$this->getAtributo('nombre')} almuerza {$comida}</p>";
+            echo "<p>{$this->getAtributo('nombre')} almuerza {$this -> almuerzo -> consumir()}</p>";
 
         }
     }
