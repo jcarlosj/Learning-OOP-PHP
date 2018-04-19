@@ -37,10 +37,16 @@
 
             return new NodoHTML( $metodo, $content, $attributes );
         }
-        /* Convierte un objeto en una cadena */
+        /* Permite llamar a un obejto como cadena y el mismo en una cadena. Puede decidir que comportamiento tendrá */
         public function __toString() {
 
             return $this -> render();        # Imprime el elemento HTML
+        }
+
+        /* Permite llamar a un objeto como si fuera una función */
+        public function __invoke( $nombre_atributo ) {
+
+            return $this -> get( $nombre_atributo );
         }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
@@ -69,8 +75,10 @@
             return $resultado;
         }
 
+        /* Obtiene un atributo del objeto */
         public function get( $nombre_atributo ) {
 
+            # Retorna el atributo del objeto, de no existir retorna 'null'
             return isset( $this -> attributes[ $nombre_atributo ] )
                     ? $this -> attributes[ $nombre_atributo ]
                     : null;
