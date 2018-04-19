@@ -7,11 +7,12 @@
 
         /* Propiedades (Atributos)*/
         private $claveBaseDatos = 'secreto';        # Un atributo de este tipo no debería ir aquí, pero es parte del ejemplo
+        private $nombreBaseDatos = 'DB_TiendaVirtual';
 
         /* Métodos mágicos */
         public function __sleep() {
 
-            return [ 'claveBaseDatos', 'atributos' ];
+            return [ 'atributos' ];        # Retorna solo las propiedades que se desean visualizar ($atributos es una propiedad de la clase padre)
         }
 
         /* Método Dinámico */
