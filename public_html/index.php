@@ -18,4 +18,4 @@
 # Agrega atributo 'name' al elemento HTML, invocando al método inexistente 'name'
   echo $elemento -> render();
   echo '<br /><pre>'; var_dump( $elemento ); echo '</pre>';
-  echo '<br /><pre>'; var_dump( $elemento( 'name' ), $elemento( 'width' ) ); echo '</pre>';    # Elimina el llamado explicito al método 'get'
+  echo '<br /><pre>'; var_dump( $elemento( 'name' ), $elemento( 'width', 100 ) ); echo '</pre>';    # Elimina el llamado explicito al método 'get'

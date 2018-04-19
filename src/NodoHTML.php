@@ -44,9 +44,9 @@
         }
 
         /* Permite llamar a un objeto como si fuera una función */
-        public function __invoke( $nombre_atributo ) {
+        public function __invoke( $nombre_atributo, $valor_predeterminado = null ) {
 
-            return $this -> get( $nombre_atributo );
+            return $this -> get( $nombre_atributo, $valor_predeterminado );
         }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
@@ -76,12 +76,12 @@
         }
 
         /* Obtiene un atributo del objeto */
-        public function get( $nombre_atributo ) {
+        public function get( $nombre_atributo, $valor_predeterminado = null ) {
 
             # Retorna el atributo del objeto, de no existir retorna 'null'
             return isset( $this -> attributes[ $nombre_atributo ] )
                     ? $this -> attributes[ $nombre_atributo ]
-                    : null;
+                    : $valor_predeterminado;
         }
 
     }
