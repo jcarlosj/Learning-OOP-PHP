@@ -21,7 +21,7 @@
 
   echo '<h3>Forma 2</h3><p>Método estático e interface fluída</p>';
   # Método estático
-  $elemento2 = NodoHTML :: textarea( 'Borre este texto' )
+  $elemento2 = NodoHTML :: tag_no_permitido( 'Borre este texto' )
                   -> id( 'descripcion-2' )
                   -> class( 'persona-mensaje' )
                   -> placeholder( 'Escriba una breve descripción personal' );
