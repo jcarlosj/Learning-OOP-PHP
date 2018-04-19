@@ -13,10 +13,11 @@
   echo '<pre>'; var_dump( $usuario ); echo '</pre>';
 
   # Serializa el objeto (como si se tratara de una cadena)
-  $data = serialize( $usuario );
+  $data = serialize( $usuario );                                # En este instante se ejecuta el método mágico __wakeup()
   echo '<h2>Datos serializados y guardados</h2>' .$data;
 
   /* Guarda los datos serializados en un archivo  */
   file_put_contents( '../storage/usuarios.txt', $data );
 
   echo '<p><a href="datos.php">Obtener datos</a></p>';
+  /* NOTA: También se puede usar la función serializable() de PHP para serializar y deserializar datos en PHP */
