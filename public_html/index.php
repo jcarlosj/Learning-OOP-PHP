@@ -27,6 +27,14 @@
                   -> placeholder( 'Escriba una breve descripción personal' );
 
   # Agrega atributo 'name' al elemento HTML, invocando al método inexistente 'name'
-    echo $elemento2;
+    echo $elemento2;                    # Forma 1: Implementa el método mágico para que pueda imprimirse como una cadena, dejando que PHP lo haga por si mismo.
+    echo '<br /><pre>'; var_dump( $elemento2 ); echo '</pre>';
+
+    echo $elemento2 -> __toString();    # Forma 2: Llamar de forma explicita al método mágico para que pueda imprimirse como una cadena
+    echo '<br /><pre>'; #var_dump( $elemento2 -> __toString() ); echo '</pre>';
+
+    echo (string) $elemento2;                       # Forma 3: Castear el objeto
+    echo '<br /><pre>'; #var_dump( (string) $elemento2 ); echo '</pre>';
+    /* NOTA: Una ves el objeto se convierte en una cadena en este caso no podemos revertirla */
+
     echo "<p>Y el programa continua...</p>";
-    #echo '<br /><pre>'; var_dump( $elemento2 ); echo '</pre>';

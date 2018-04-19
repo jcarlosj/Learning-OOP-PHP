@@ -39,8 +39,8 @@
         }
         /* Convierte un objeto en una cadena */
         public function __toString() {
-            
-            return "[NodoHtml]";
+
+            return $this -> render();        # Imprime el elemento HTML
         }
 
         /* Devuelte el elemento HTML estructuralmente conformado */
