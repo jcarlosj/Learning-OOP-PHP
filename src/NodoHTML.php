@@ -32,8 +32,8 @@
         public static function __callStatic( $metodo, array $args = [] ) {
 
             /* Valida si los argumentos han sido pasados */
-            $content = isset( $args[ 0 ] ) ? $args[ 0 ] : null ;
-            $attributes = isset( $args[ 1 ] ) ? $args[ 1 ] : [] ;
+            $content = isset( $args[ 0 ] ) ?? null ;
+            $attributes = isset( $args[ 1 ] ) ?? [] ;
 
             return new NodoHTML( $metodo, $content, $attributes );
         }
@@ -79,9 +79,7 @@
         public function get( $nombre_atributo, $valor_predeterminado = null ) {
 
             # Retorna el atributo del objeto, de no existir retorna 'null'
-            return isset( $this -> attributes[ $nombre_atributo ] )
-                    ? $this -> attributes[ $nombre_atributo ]
-                    : $valor_predeterminado;
+            return $this -> attributes[ $nombre_atributo ] ?? $valor_predeterminado;
         }
 
     }
