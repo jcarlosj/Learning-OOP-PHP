@@ -9,6 +9,9 @@
 
   $usuario = new Usuario([ 'nombre' => 'Elisa', 'email' => 'egiraldo@correo.co' ]);
 
+  echo '<h2>Explora el Objeto creado</h2>';
+  echo '<pre>'; var_dump( $usuario ); echo '</pre>';
+
   # Serializa el objeto (como si se tratara de una cadena)
   $data = serialize( $usuario );
   echo '<h2>Datos serializados y guardados</h2>' .$data;
