@@ -6,7 +6,7 @@
     class Usuario extends Model {
 
         /* */
-        public function getPrimerNombreAtributo( $valor ) {
+        public function getNombreAtributo( $valor ) {
 
             return strtoupper( $valor );        # Retorma el valor en mayúsculas
         }
