@@ -1,9 +1,10 @@
 <?php
     namespace MetodosMagicos;
 
-    use Iterator;
+    use IteratorAggregate;
+    use ArrayIterator;
 
-    class Lonchera implements Iterator {        # Esta 'Interface' de PHP requiere que implementemos 5 métodos: rewind, current, next, key, valid
+    class Lonchera implements IteratorAggregate {        # Esta 'Interface' de PHP requiere que implementemos 1 método: getIterator
         /* Propiedades (Atributos) */
         protected $comida = [];                /* NOTA: Es una muy buena idea envolver un 'Array' dentro de una clase para ampliar las funcionalidades
                                                         esto nos acerca al concepto de las Colecciones en PHP */
@@ -43,30 +44,11 @@
             return $this -> comida;
         }
 
-        /* Métodos 'Interface' Iterator para PHP 7 */
-        public function rewind() {
+        /* Métodos 'Interface' IteratorAggregate para  */
+        public function getIterator() {
 
-            $this -> position = 0;
+            return new ArrayIterator( $this -> comida );        # 'ArrayIterator' es una clase de PHP que permite hacer la iteración sobre un 'Array'
         }
 
-        public function current() {
-
-            return $this -> comida[ $this -> position ];
-        }
-
-        public function key() {
-
-            return $this -> position;
-        }
-
-        public function next() {
-            ++ $this -> position;
-
-        }
-
-        public function valid() {
-
-            return isset( $this -> comida[ $this -> position ] );
-        }
 
     }
