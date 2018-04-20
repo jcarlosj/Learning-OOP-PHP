@@ -36,6 +36,8 @@
         /* Extrae todos los 'Alimentos' (valores) de la 'Lonchera' (Objeto contiene un array) */
         public function comeTodo() {
 
+            echo '<pre><b>Lonchera: </b><br /> '; var_dump( $this -> almuerzo ); echo '</pre>';
+
             echo 'Hay ' . $this -> almuerzo -> count() . ' alimentos en la lonchera de ' .$this -> getAtributo( 'nombre' );
             #var_dump( $this -> almuerzo -> comida );
 
@@ -44,11 +46,29 @@
                 throw new \Exception( "{$this->getAtributo('nombre')} no tiene nada para comer :( ", 1);
             }
 
+            # Filtro al que se le pasa un CallBack para filtrar los alimentos que NO son bebidas
+            $alimentos = $this -> almuerzo -> filtro( function( $alimento ) {
+                return ! $alimento -> bebida;
+            });
+            //echo '<pre><b>Alimentos:</b><br /> '; var_dump( $alimentos ); echo '</pre>';
+
+            # Filtro al que se le pasa un CallBack para filtrar los alimentos que son bebidas
+            $bebidas = $this -> almuerzo -> filtro( function( $alimento ) {
+                return $alimento -> bebida;
+            });
+            //echo '<pre><b>Bebidas:</b><br /> '; var_dump( $bebidas ); echo '</pre>';
+
             echo '<ul>';
-            # Recorre cada uno de los alimentos contenidos en la lonchera
-            foreach ( $this -> almuerzo as $key => $comida ) {                  # Itera sobre el objeto directamente
-                echo "<li>{$this->getAtributo('nombre')} come {$comida}</li>";
-            }
+                # Recorre los alimentos que NO son bebidas
+                foreach ( $alimentos as $key => $alimento ) {
+                    echo "<li>{$this->getAtributo('nombre')} come {$alimento->nombre}</li>";
+                }
+
+                # Recorre los alimentos que son bebidas
+                foreach ( $bebidas as $key => $bebida ) {
+                    echo "<li>{$this->getAtributo('nombre')} bebe {$bebida->nombre}</li>";
+                }
             echo '</ul>';
+
         }
     }

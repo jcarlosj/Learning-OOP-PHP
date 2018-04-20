@@ -45,6 +45,32 @@
             return $this -> comida;
         }
 
+        /* Filtra el 'Array' de items */
+        public function filtro( $callback ) {
+
+            # Regresa una nueva colección filtrada por el callback del 'Array' $this -> comida
+            $alimentos = array_filter( $this -> comida, $callback );
+            // echo '<pre style="color:blue;">'; var_dump( $alimentos ); echo '</pre>';
+
+            return new static ( $alimentos );
+            /* NOTA: En el caso de usar 'static' este estaría haciendo referencia
+                     al nombre de la clase que está llamando el metodo 'filtro' en
+                     este caso 'Usuario', por lo que la referencia estaría creandose
+                     de la clase 'Lonchera' ya que es esta instancia la que la implementa
+
+                     $this -> almuerzo = new Lonchera();                        # En el constructor de 'Usuario'
+                     $this -> almuerzo -> filtro( function( $alimento ) {       # Implementa filtro en el método 'comeTodo' de 'Usuario'
+                         return ! $alimento -> bebida;
+                     });
+
+                    Para abreviar el código se pueden usar estas dos opciones:
+
+                    return new static ( array_filter( $this -> comida, $callback ) );      # Primera opción: ya que la clase 'Lonchera' no implementa herencia
+
+                    return new Lonchera( array_filter( $this -> comida, $callback ) );     # Segunda opción: Creando una instancia del tipo que se desea regresar 'Lonchera'
+            */
+        }
+
         /* Métodos 'Interface' IteratorAggregate  */
         public function getIterator() {
 
