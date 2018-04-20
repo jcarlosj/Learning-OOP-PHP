@@ -36,7 +36,7 @@
         /* Extrae todos los 'Alimentos' (valores) de la 'Lonchera' (Objeto contiene un array) */
         public function comeTodo() {
 
-            echo 'Hay ' .count( $this -> almuerzo -> comida ). ' alimentos en la lonchera de ' .$this -> getAtributo( 'nombre' );
+            echo 'Hay ' .count( $this -> almuerzo -> all() ). ' alimentos en la lonchera de ' .$this -> getAtributo( 'nombre' );
             #var_dump( $this -> almuerzo -> comida );
 
             # Valida que la 'Lonchera' no se encuentre vacía
@@ -46,7 +46,7 @@
 
             echo '<ul>';
             # Recorre cada uno de los alimentos contenidos en la lonchera
-            foreach ( $this -> almuerzo -> comida as $key => $comida ) {
+            foreach ( $this -> almuerzo -> all() as $key => $comida ) {
                 echo "<li>{$this->getAtributo('nombre')} come {$comida}</li>";
             }
             echo '</ul>';

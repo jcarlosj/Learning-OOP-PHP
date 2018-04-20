@@ -3,7 +3,7 @@
 
     class Lonchera {
         /* Propiedades (Atributos) */
-        public $comida = [];                /* NOTA: Es una muy buena idea envolver un 'Array' dentro de una clase para ampliar las funcionalidades
+        protected $comida = [];                /* NOTA: Es una muy buena idea envolver un 'Array' dentro de una clase para ampliar las funcionalidades
                                                         esto nos acerca al concepto de las Colecciones en PHP */
         protected $original = true;
         protected $estado = 'Alimento para consumir';
@@ -31,5 +31,11 @@
         public function isEmpty() {
 
             return empty( $this -> comida );
+        }
+
+        /* Obtiene el 'Array' con los alimentos contenidos en el mismo */
+        public function all() {
+
+            return $this -> comida;
         }
     }
