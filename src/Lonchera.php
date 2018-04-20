@@ -3,7 +3,7 @@
 
     class Lonchera {
         /* Propiedades (Atributos) */
-        protected $comida = [];                /* NOTA: Es una muy buena idea envolver un 'Array' dentro de una clase para ampliar las funcionalidades
+        public $comida = [];                /* NOTA: Es una muy buena idea envolver un 'Array' dentro de una clase para ampliar las funcionalidades
                                                         esto nos acerca al concepto de las Colecciones en PHP */
         protected $original = true;
         protected $estado = 'Alimento para consumir';

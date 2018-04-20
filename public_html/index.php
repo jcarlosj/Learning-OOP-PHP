@@ -16,5 +16,5 @@
   # Asigna el almuerzo de la lonchera a los Hermanos (la misma lonchera)
   $juliana -> setAlmuerzo( $lonchera );                     # (Objeto 1): Paso parámetro por referencia (objeto original)
 
-  # Las Alumnas comen el almuerzo
-  $juliana -> come();
+  # Comer todo el contenido de la  lonchera
+  $juliana -> comeTodo();
