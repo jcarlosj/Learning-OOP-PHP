@@ -46,7 +46,7 @@
 
             echo '<ul>';
             # Recorre cada uno de los alimentos contenidos en la lonchera
-            foreach ( $this -> almuerzo -> all() as $key => $comida ) {
+            foreach ( $this -> almuerzo as $key => $comida ) {                  # Itera sobre el objeto directamente
                 echo "<li>{$this->getAtributo('nombre')} come {$comida}</li>";
             }
             echo '</ul>';
