@@ -23,15 +23,13 @@
     }
 
     public function tomorrow() {
-        $this -> tiempo += 24*60*60;    # Sumamos 1 día
-
-        return $this;
+        # Retorna un nuevo objeto de la misma clase para evitar que se modifique el objeto original
+        return new Tiempo( $this -> tiempo + 24*60*60 );    # Sumamos 1 día
     }
 
     public function yesterday() {
-        $this -> tiempo -= 24*60*60;    # Restamos 1 día
-
-        return $this;
+        # Retorna un nuevo objeto de la misma clase para evitar que se modifique el objeto original
+        return new Tiempo( $this -> tiempo - 24*60*60 );    # Restamos 1 día
     }
 
   }
@@ -43,3 +41,7 @@
 
  echo "<p>Mañana será {$tiempo->tomorrow()}</p>";
  echo "<p>Ayer fue {$tiempo->yesterday()}</p>";
+
+/* NOTA: Ahora el objeto de la clase 'Tiempo' se considera un objeto inmutable
+         puesto que ninguno de sus métodos dentro del objeto permiten cambiar
+         el estado de las propiedades del mismo */
