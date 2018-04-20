@@ -43,34 +43,33 @@
             return $this -> comida;
         }
 
-        /* Métodos 'Interface' Iterator para PHP 5 */
+        /* Métodos 'Interface' Iterator para PHP 7 */
         public function rewind() {
-            echo "<pre><b>Rebobinando...</b></pre>";
-            reset( $this -> comida );
+            echo "<pre><b>Rebobinando...</b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+            $this -> position = 0;
         }
 
         public function current() {
-            $actual = current( $this -> comida );
-            echo "<pre><b>Actual:</b> {$actual} </pre>";
-            return $actual;
+            echo "<pre><b>Actual: {$this->comida[$this->position]} </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+            return $this -> comida[ $this -> position ];
         }
 
         public function key() {
-            $item = key( $this -> comida );
-            echo "<pre><b>Ítem:</b> {$item} </pre>";
-            return $item;
+            echo "<pre><b>Ítem: {$this->position} </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+            return $this -> position;
         }
 
         public function next() {
-            $siguiente = next( $this -> comida );
-            echo "<pre><b>Siguiente:</b> {$siguiente} </pre>";
-            return $siguiente;
+            ++ $this -> position;
+            echo "<pre><b>Siguiente: {$this->position}  </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
         }
 
         public function valid() {
-            $clave = key( $this -> comida );
-            $valido = ( $clave !== NULL && $clave !== FALSE );
-            echo "<pre><b>Valido? </b> {$valido} </pre>";
-            return $valido;
+            $valido = isset( $this -> comida[ $this -> position ] )
+                        ? true
+                        : false;
+            echo "<pre><b>Valido? {$valido} </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+            return isset( $this -> comida[ $this -> position ] );
         }
+
     }
