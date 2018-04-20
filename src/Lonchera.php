@@ -45,30 +45,27 @@
 
         /* Métodos 'Interface' Iterator para PHP 7 */
         public function rewind() {
-            echo "<pre><b>Rebobinando...</b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+
             $this -> position = 0;
         }
 
         public function current() {
-            echo "<pre><b>Actual: {$this->comida[$this->position]} </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+
             return $this -> comida[ $this -> position ];
         }
 
         public function key() {
-            echo "<pre><b>Ítem: {$this->position} </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+
             return $this -> position;
         }
 
         public function next() {
             ++ $this -> position;
-            echo "<pre><b>Siguiente: {$this->position}  </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+
         }
 
         public function valid() {
-            $valido = isset( $this -> comida[ $this -> position ] )
-                        ? true
-                        : false;
-            echo "<pre><b>Valido? {$valido} </b><br/>"; var_dump( __METHOD__ ); echo "</pre>";
+
             return isset( $this -> comida[ $this -> position ] );
         }
 
