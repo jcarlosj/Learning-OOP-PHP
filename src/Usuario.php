@@ -20,7 +20,7 @@
             $this -> almuerzo = $almuerzo;
         }
 
-        /* */
+        /* Extrae un solo 'Alimento' (valor) de la 'Lonchera' (array) */
         public function come() {
 
             /* NOTA: Es importante dejar las validaciones y/o Excepciones en la primera parte de cada método que la requiera */
@@ -29,7 +29,7 @@
             }
 
             /* Despúes Lógica */
-            echo "<p>{$this->getAtributo('nombre')} almuerza {$this -> almuerzo -> consumir()}</p>";
+            echo "<p>{$this->getAtributo('nombre')} come {$this -> almuerzo -> consumir()}</p>";
 
         }
     }
