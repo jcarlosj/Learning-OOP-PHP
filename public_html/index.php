@@ -25,6 +25,10 @@
     ]),
     new Alimento([
         'nombre' => 'Manzana'
+    ]),
+    new Alimento([
+        'nombre' => 'Agua mineral',
+        'bebida' => true
     ])
   ]);
 

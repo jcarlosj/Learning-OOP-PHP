@@ -36,10 +36,7 @@
         /* Extrae todos los 'Alimentos' (valores) de la 'Lonchera' (Objeto contiene un array) */
         public function comeTodo() {
 
-            echo '<pre><b>Lonchera: </b><br /> '; var_dump( $this -> almuerzo ); echo '</pre>';
-
-            echo 'Hay ' . $this -> almuerzo -> count() . ' alimentos en la lonchera de ' .$this -> getAtributo( 'nombre' );
-            #var_dump( $this -> almuerzo -> comida );
+            // echo '<pre><b>Lonchera: </b><br /> '; var_dump( $this -> almuerzo ); echo '</pre>';
 
             # Valida que la 'Lonchera' no se encuentre vacía
             if( $this -> almuerzo -> isEmpty() ) {
@@ -57,6 +54,12 @@
                 return $alimento -> bebida;
             });
             //echo '<pre><b>Bebidas:</b><br /> '; var_dump( $bebidas ); echo '</pre>';
+
+            echo "<p>
+                    Hay {$this->almuerzo->count()} alimentos en la lonchera
+                    <br />{$this->getAtributo('nombre')} tiene: {$alimentos->count()}
+                    alimentos, {$bebidas->count()} bebidas
+                 </p>";
 
             echo '<ul>';
                 # Recorre los alimentos que NO son bebidas
