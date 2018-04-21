@@ -38,10 +38,28 @@
 
  $tiempo = new Tiempo();
  echo "<p>Hoy es {$tiempo}</p>";
-
- echo "<p>Mañana será {$tiempo->tomorrow()}</p>";
+ $tomorrow = $tiempo->tomorrow();
+ echo "<p>Mañana será {$tomorrow}</p>";
+ echo "<p>Pasado mañana será {$tomorrow->tomorrow()} equivale a {$tiempo->tomorrow()->tomorrow()}</p>";
  echo "<p>Ayer fue {$tiempo->yesterday()}</p>";
 
 /* NOTA: Ahora el objeto de la clase 'Tiempo' se considera un objeto inmutable
          puesto que ninguno de sus métodos dentro del objeto permiten cambiar
-         el estado de las propiedades del mismo */
+         el estado de las propiedades del mismo
+
+         Los objetos que no posean identidad deben trabajarse como objetos mutables
+
+             Pedro != Pedro         Pedro (ID:34324324) y Pedro (ID:9343234)
+             Son usuarios o personas con el mismo nombre pero con identidades distintas
+
+         Si los objetos van a manejar excusivamente valores, cantidades únicas se
+         puede trabajar con objetos inmutables
+
+            10 USD == 10 USD
+            Son equivalencias iguales
+
+        Más explicito
+
+            10 USD == 10 USD             Identificar el valor (Objeto inmutable)
+            Serial != Serial             Identificar el billete de 10 USD (Objeto mutable)
+         */
