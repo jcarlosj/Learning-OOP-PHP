@@ -36,30 +36,33 @@
 
   # Instancia
 
- $tiempo = new Tiempo();
- echo "<p>Hoy es {$tiempo}</p>";
- $tomorrow = $tiempo->tomorrow();
- echo "<p>Mañana será {$tomorrow}</p>";
- echo "<p>Pasado mañana será {$tomorrow->tomorrow()} equivale a {$tiempo->tomorrow()->tomorrow()}</p>";
- echo "<p>Ayer fue {$tiempo->yesterday()}</p>";
+   $tiempo = new Tiempo();
+   $tiempo2 = $tiempo;
+   $tiempo3 = new Tiempo();
+   $tiempo4 = new Tiempo( time() + 60 );    // El tiempo actual más 60 segundos
 
-/* NOTA: Ahora el objeto de la clase 'Tiempo' se considera un objeto inmutable
-         puesto que ninguno de sus métodos dentro del objeto permiten cambiar
-         el estado de las propiedades del mismo
+   echo "<h2>Objetos \$tiempo, \$tiempo2, \$tiempo3 \$tiempo4</h2>";
+   echo '<pre style="color:blue;"><b>\$tiempo </b>'; var_dump( $tiempo ); echo '</pre>';
+   echo '<pre style="color:orange;"><b>\$tiempo2 </b>'; var_dump( $tiempo2 ); echo '</pre>';
+   echo '<pre style="color:green;"><b>\$tiempo3 </b>'; var_dump( $tiempo3 ); echo '</pre>';
+   echo '<pre style="color:red;"><b>\$tiempo4 </b>'; var_dump( $tiempo3 ); echo '</pre>';
 
-         Los objetos que no posean identidad deben trabajarse como objetos mutables
+   echo "<h2>Comparación básica </h2>";
+   echo "<p>\$tiempo == \$tiempo2<b> - ";
+   echo ( $tiempo == $tiempo2 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
 
-             Pedro != Pedro         Pedro (ID:34324324) y Pedro (ID:9343234)
-             Son usuarios o personas con el mismo nombre pero con identidades distintas
+   echo "<p>\$tiempo == \$tiempo3<b> - ";
+   echo ( $tiempo == $tiempo3 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
 
-         Si los objetos van a manejar excusivamente valores, cantidades únicas se
-         puede trabajar con objetos inmutables
+   echo "<p>\$tiempo3 == \$tiempo4<b> - ";
+   echo ( $tiempo3 == $tiempo4 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
 
-            10 USD == 10 USD
-            Son equivalencias iguales
+   echo "<h2>Comparación estricta </h2>";
+   echo "<p>\$tiempo === \$tiempo2<b> - ";
+   echo ( $tiempo === $tiempo2 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
 
-        Más explicito
+   echo "<p>\$tiempo2 === \$tiempo3<b> - ";
+   echo ( $tiempo === $tiempo3 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
 
-            10 USD == 10 USD             Identificar el valor (Objeto inmutable)
-            Serial != Serial             Identificar el billete de 10 USD (Objeto mutable)
-         */
+   echo "<p>\$tiempo3 === \$tiempo4<b> - ";
+   echo ( $tiempo3 === $tiempo4 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
