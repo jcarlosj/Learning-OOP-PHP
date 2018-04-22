@@ -10,10 +10,12 @@
   class Tiempo {
     /* Propiedades (Atributos) */
     protected $tiempo = null;
+    protected $timezone;
 
     /* Constructor */
-    public function __construct( $tiempo = null ) {
+    public function __construct( $tiempo = null, $timezone = 'Europe/London' ) {
         $this -> tiempo = $tiempo ?: time();
+        $this -> timezone = $timezone;
     }
 
     /* Método mágico: Convierte el tiempo en una cadena */
@@ -36,33 +38,17 @@
 
   # Instancia
 
-   $tiempo = new Tiempo();
-   $tiempo2 = $tiempo;
-   $tiempo3 = new Tiempo();
-   $tiempo4 = new Tiempo( time() + 60 );    // El tiempo actual más 60 segundos
+  $tiempo = new Tiempo( null, 'Europe/Paris');
+  $tiempo2 = new Tiempo( null, 'America/Bogota' );
 
-   echo "<h2>Objetos \$tiempo, \$tiempo2, \$tiempo3 \$tiempo4</h2>";
-   echo '<pre style="color:blue;"><b>\$tiempo </b>'; var_dump( $tiempo ); echo '</pre>';
-   echo '<pre style="color:orange;"><b>\$tiempo2 </b>'; var_dump( $tiempo2 ); echo '</pre>';
-   echo '<pre style="color:green;"><b>\$tiempo3 </b>'; var_dump( $tiempo3 ); echo '</pre>';
-   echo '<pre style="color:red;"><b>\$tiempo4 </b>'; var_dump( $tiempo3 ); echo '</pre>';
+  echo "<h2>Objetos \$tiempo, \$tiempo2  </h2><p>Representan la hora actual pero con zonas horarias diferentes</p>";
+  echo '<pre style="color:blue;"><b>\$tiempo </b>'; var_dump( $tiempo ); echo '</pre>';
+  echo '<pre style="color:orange;"><b>\$tiempo2 </b>'; var_dump( $tiempo2 ); echo '</pre>';
 
-   echo "<h2>Comparación básica </h2>";
-   echo "<p>\$tiempo == \$tiempo2<b> - ";
-   echo ( $tiempo == $tiempo2 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
+  echo "<h2>Comparación básica </h2>";
+  echo "<p>\$tiempo == \$tiempo2<b> - ";
+  echo ( $tiempo == $tiempo2 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
 
-   echo "<p>\$tiempo == \$tiempo3<b> - ";
-   echo ( $tiempo == $tiempo3 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
-
-   echo "<p>\$tiempo3 == \$tiempo4<b> - ";
-   echo ( $tiempo3 == $tiempo4 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
-
-   echo "<h2>Comparación estricta </h2>";
-   echo "<p>\$tiempo === \$tiempo2<b> - ";
-   echo ( $tiempo === $tiempo2 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
-
-   echo "<p>\$tiempo2 === \$tiempo3<b> - ";
-   echo ( $tiempo === $tiempo3 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
-
-   echo "<p>\$tiempo3 === \$tiempo4<b> - ";
-   echo ( $tiempo3 === $tiempo4 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
+  echo "<h2>Comparación estricta </h2>";
+  echo "<p>\$tiempo === \$tiempo2<b> - ";
+  echo ( $tiempo === $tiempo2 ) ? 'VERDADERO' : 'FALSO'; echo '</b></p>';
