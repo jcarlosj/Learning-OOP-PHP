@@ -42,8 +42,8 @@
 
   # Instancia
 
-  $tiempo = new Tiempo( null, 'Europe/Paris' );
-  $tiempo2 = new MiTiempo( null, 'America/Bogota' );
+  $tiempo = new Tiempo();
+  $tiempo2 = new MiTiempo();
 
   echo "<h2>Objetos \$tiempo, \$tiempo2  </h2><p>Representan la hora actual pero con zonas horarias diferentes</p>";
   echo '<pre style="color:blue;"><b>\$tiempo </b>'; var_dump( $tiempo ); echo '</pre>';
