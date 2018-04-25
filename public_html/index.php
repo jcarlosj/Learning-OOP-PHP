@@ -7,33 +7,51 @@
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
 
-  # Persona
-  $juliana = new Usuario([ 'nombre' => 'Juliana' ]);
+  /* Ejemplo: Basado en el Videojuego */
 
-  # Lonchera es ahora una instancia (Objeto 1)
-  $lonchera = new Lonchera([
-    new Alimento([
-        'nombre' => 'Emparedado',
-        'bebida' => false                 # Puede especificarse o no en caso de ser falso
-    ]),
-    new Alimento([
-        'nombre' => 'Papas'
-    ]),
-    new Alimento([
-        'nombre' => 'Jugo de Lulo',
-        'bebida' => true                 # Puede especificarse o no en caso de ser falso
-    ]),
-    new Alimento([
-        'nombre' => 'Manzana'
-    ]),
-    new Alimento([
-        'nombre' => 'Agua mineral',
-        'bebida' => true
-    ])
-  ]);
+  class Caballero {
+      public function atacarEspada() {
+          echo "<p>Acata con la espada</p>";
+      }
+      public function cabalgar() {
+          echo "<p>Cabalga</p>";
+      }
+  }
 
-  # Asigna el almuerzo de la lonchera a los Hermanos (la misma lonchera)
-  $juliana -> setAlmuerzo( $lonchera );                     # (Objeto 1): Paso parámetro por referencia (objeto original)
+  class Arquero {
+      public function dispararFlecha() {
+          echo "<p>Dispara una flecha</p>";
+      }
+      public function caminar() {
+          echo "<p>Camina</p>";
+      }
+  }
 
-  # Comer todo el contenido de la  lonchera
-  $juliana -> comeTodo();
+  class ArqueroMontaCaballo {
+      public function dispararFlecha() {
+          echo "<p>Dispara una flecha</p>";
+      }
+      public function cabalgar() {
+          echo "<p>Cabalga</p>";
+      }
+  }
+
+  /* Instancias */
+  $caballero = new Caballero();
+  $caballero -> atacarEspada();
+  $caballero -> cabalgar();                        # Esta acción es la misma que realiza el 'Arquero que monta a caballo'
+  echo '<hr />';
+
+  $arquero = new Arquero;
+  $arquero -> dispararFlecha();                    # Esta acción es la misma que realiza el 'Arquero que monta a caballo'
+  $arquero -> caminar();
+  echo '<hr />';
+
+  $arqueroACaballo = new ArqueroMontaCaballo;
+  $arqueroACaballo -> dispararFlecha();            # Esta acción es la misma que realiza el 'Arquero'
+  $arqueroACaballo -> cabalgar();                  # Esta acción es la misma que realiza el 'Caballero'
+  echo '<hr />';
+
+/* NOTA: Una forma de solucionar este problema es implementando la herencia en PHP
+         ya que lo que pretende la POO es no repetir acciones (o métodos) en diferentes
+         partes del código si estos van a realizar la misma funcionalidad */
