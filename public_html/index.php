@@ -22,16 +22,13 @@
       public function dispararFlecha() {
           echo "<p>Dispara una flecha</p>";
       }
-      public function caminar() {
+      public function move() {
           echo "<p>Camina</p>";
       }
   }
 
-  class ArqueroMontaCaballo {
-      public function dispararFlecha() {
-          echo "<p>Dispara una flecha</p>";
-      }
-      public function cabalgar() {
+  class ArqueroMontaCaballo extends Arquero {
+      public function move() {
           echo "<p>Cabalga</p>";
       }
   }
@@ -43,15 +40,16 @@
   echo '<hr />';
 
   $arquero = new Arquero;
-  $arquero -> dispararFlecha();                    # Esta acción es la misma que realiza el 'Arquero que monta a caballo'
-  $arquero -> caminar();
+  $arquero -> dispararFlecha();
+  $arquero -> move();
   echo '<hr />';
 
   $arqueroACaballo = new ArqueroMontaCaballo;
-  $arqueroACaballo -> dispararFlecha();            # Esta acción es la misma que realiza el 'Arquero'
-  $arqueroACaballo -> cabalgar();                  # Esta acción es la misma que realiza el 'Caballero'
+  $arqueroACaballo -> dispararFlecha();
+  $arqueroACaballo -> move();                      # Esta acción (Cabalgar) es la misma que realiza el 'Caballero'
   echo '<hr />';
 
-/* NOTA: Una forma de solucionar este problema es implementando la herencia en PHP
-         ya que lo que pretende la POO es no repetir acciones (o métodos) en diferentes
-         partes del código si estos van a realizar la misma funcionalidad */
+/* NOTA: Al implementar la herencia entre las clases 'Arquero' y 'ArqueroMontaCaballo'
+         podemos dar solución a las acciones entre dos de los objetos, sin embargo
+         la funcionalidad compartida ya no se podrá resolver por este método ya
+         que PHP no permite la herencia múltiple como si lo hacen otros lenguajes */
