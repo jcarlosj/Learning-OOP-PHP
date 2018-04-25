@@ -17,7 +17,7 @@
   }
 
   trait PuedeMontarCaballo {
-      public function cabalgar() {
+      public function move() {
           echo "<p>Cabalga</p>";
       }
   }
@@ -29,36 +29,34 @@
   }
 
   /* Clases */
-  class Caballero {
-      use PuedeMontarCaballo, PuedeUsarEspada;
-  }
-
-  class Arquero {
-      use PuedeDispararFlechas;
-
+  class Unidad {
       public function move() {
           echo "<p>Camina</p>";
       }
   }
 
-  class ArqueroMontaCaballo {
+  class Caballero {
+      use PuedeMontarCaballo, PuedeUsarEspada;
+  }
+
+  class Arquero extends Unidad {
+      use PuedeDispararFlechas;
+  }
+
+  class ArqueroMontaCaballo extends Unidad {
       use PuedeMontarCaballo, PuedeDispararFlechas;
   }
 
   /* Instancias */
-  $caballero = new Caballero();
-  $caballero -> atacarEspada();
-  $caballero -> cabalgar();          
-  echo '<hr />';
-
   $arquero = new Arquero;
+  $arquero -> move();
   $arquero -> dispararFlecha();
   $arquero -> move();
   echo '<hr />';
 
   $arqueroACaballo = new ArqueroMontaCaballo;
   $arqueroACaballo -> dispararFlecha();
-  $arqueroACaballo -> cabalgar();
+  $arqueroACaballo -> move();
   echo '<hr />';
 
 /* NOTA: */
