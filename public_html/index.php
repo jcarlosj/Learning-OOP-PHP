@@ -46,6 +46,10 @@
   class ArqueroMontaCaballo extends Unidad {
       #use PuedeMontarCaballo;
       use PuedeDispararFlechas;
+
+      public function move() {
+          echo "<p>CABALGA...</p>";
+      }
   }
 
   /* Instancias */
