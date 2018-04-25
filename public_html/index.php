@@ -23,7 +23,7 @@
   }
 
   trait PuedeMontarCaballo {
-      public function move() {
+      public function move() {                    # La definición explicita hace que use este método
           echo "<p>Cabalga</p>";
       }
   }
@@ -44,23 +44,14 @@
   }
 
   class ArqueroMontaCaballo {
-      use AccionesBasicas, PuedeMontarCaballo;            # Estos dos 'Traits' implementan el mismo método 'move'
+      use AccionesBasicas, PuedeMontarCaballo {
+          PuedeMontarCaballo :: move insteadof AccionesBasicas;  # Define cual es el 'Trait' y el método que se va a usar
+      }    /* NOTA: 'instead of' = En lugar de (Esto obliga a que la definición sea explicita) */
       use PuedeDispararFlechas;
   }
 
   /* Instancias */
-  $arquero = new Arquero;
-  $arquero -> move();
-  $arquero -> dispararFlecha();
-  $arquero -> move();
-  echo '<hr />';
-
   $arqueroACaballo = new ArqueroMontaCaballo;
   $arqueroACaballo -> dispararFlecha();
   $arqueroACaballo -> move();
   echo '<hr />';
-
-/* NOTA: Al comentar la implementación del 'Trait' en la clase 'ArqueroMontaCaballo'
-         queda en evidencia que la funcionalidad del 'Trait' reescribe la funcionalidad
-         de la clase padre en este caso 'Unidad', ya que al no usarla la que se despliega
-         es esta última */
