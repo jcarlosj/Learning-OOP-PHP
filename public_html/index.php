@@ -45,13 +45,19 @@
 
   class ArqueroMontaCaballo {
       use AccionesBasicas, PuedeMontarCaballo {
-          PuedeMontarCaballo :: move insteadof AccionesBasicas;  # Define cual es el 'Trait' y el método que se va a usar
-      }    /* NOTA: 'instead of' = En lugar de (Esto obliga a que la definición sea explicita) */
+          PuedeMontarCaballo :: move insteadof AccionesBasicas;         # Define cual es el 'Trait' y el método que se va a usar
+          PuedeMontarCaballo :: move as cabalgar;                       # Agrega un alias al nombre del 'Trait'
+          AccionesBasicas :: move as movimientoBasico;                  # Agrega un alias al nombre del 'Trait'
+
+      }    /* NOTA: Si esta solución hay que implementarla de manera muy frecuente en el desarrollo,
+                    probablemente esta no sea la mejor opción para implementar */
       use PuedeDispararFlechas;
   }
 
   /* Instancias */
   $arqueroACaballo = new ArqueroMontaCaballo;
   $arqueroACaballo -> dispararFlecha();
-  $arqueroACaballo -> move();
+  $arqueroACaballo -> move();                    # Por defecto será el método 'move' del 'Trait' PuedeMontarCaballo
+  $arqueroACaballo -> movimientoBasico();        # Usa el alias y llama a el método 'move' del 'Trait' AccionesBasicas
+  $arqueroACaballo -> cabalgar();                # Usa el alias y llama al método 'move' del  'Trait' PuedeMontarCaballo
   echo '<hr />';
