@@ -44,7 +44,8 @@
   }
 
   class ArqueroMontaCaballo extends Unidad {
-      use PuedeMontarCaballo, PuedeDispararFlechas;
+      #use PuedeMontarCaballo;
+      use PuedeDispararFlechas;
   }
 
   /* Instancias */
@@ -59,4 +60,7 @@
   $arqueroACaballo -> move();
   echo '<hr />';
 
-/* NOTA: */
+/* NOTA: Al comentar la implementación del 'Trait' en la clase 'ArqueroMontaCaballo'
+         queda en evidencia que la funcionalidad del 'Trait' reescribe la funcionalidad
+         de la clase padre en este caso 'Unidad', ya que al no usarla la que se despliega
+         es esta última */
