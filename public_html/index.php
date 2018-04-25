@@ -10,6 +10,12 @@
   /* Ejemplo: Basado en el Videojuego */
 
   /* Traits: Representan acciones en la mayoría de los casos */
+  trait AccionesBasicas {
+      public function move() {
+          echo "<p>Camina</p>";
+      }
+  }
+
   trait PuedeDispararFlechas {
       public function dispararFlecha() {
           echo "<p>Dispara una flecha</p>";
@@ -29,27 +35,17 @@
   }
 
   /* Clases */
-  class Unidad {
-      public function move() {
-          echo "<p>Camina</p>";
-      }
-  }
-
   class Caballero {
       use PuedeMontarCaballo, PuedeUsarEspada;
   }
 
-  class Arquero extends Unidad {
+  class Arquero {
       use PuedeDispararFlechas;
   }
 
-  class ArqueroMontaCaballo extends Unidad {
-      #use PuedeMontarCaballo;
+  class ArqueroMontaCaballo {
+      use AccionesBasicas, PuedeMontarCaballo;            # Estos dos 'Traits' implementan el mismo método 'move'
       use PuedeDispararFlechas;
-
-      public function move() {
-          echo "<p>CABALGA...</p>";
-      }
   }
 
   /* Instancias */
