@@ -9,34 +9,46 @@
 
   /* Ejemplo: Basado en el Videojuego */
 
-  class Caballero {
-      public function atacarEspada() {
-          echo "<p>Acata con la espada</p>";
+  /* Traits: Representan acciones en la mayoría de los casos */
+  trait PuedeDispararFlechas {
+      public function dispararFlecha() {
+          echo "<p>Dispara una flecha</p>";
       }
+  }
+
+  trait PuedeMontarCaballo {
       public function cabalgar() {
           echo "<p>Cabalga</p>";
       }
   }
 
-  class Arquero {
-      public function dispararFlecha() {
-          echo "<p>Dispara una flecha</p>";
+  trait PuedeUsarEspada {
+      public function atacarEspada() {
+          echo "<p>Acata con la espada</p>";
       }
+  }
+
+  /* Clases */
+  class Caballero {
+      use PuedeMontarCaballo, PuedeUsarEspada;
+  }
+
+  class Arquero {
+      use PuedeDispararFlechas;
+
       public function move() {
           echo "<p>Camina</p>";
       }
   }
 
-  class ArqueroMontaCaballo extends Arquero, Caballero {
-      public function move() {
-          echo "<p>Cabalga</p>";
-      }
+  class ArqueroMontaCaballo {
+      use PuedeMontarCaballo, PuedeDispararFlechas;
   }
 
   /* Instancias */
   $caballero = new Caballero();
   $caballero -> atacarEspada();
-  $caballero -> cabalgar();                        # Esta acción es la misma que realiza el 'Arquero que monta a caballo'
+  $caballero -> cabalgar();          
   echo '<hr />';
 
   $arquero = new Arquero;
@@ -46,14 +58,7 @@
 
   $arqueroACaballo = new ArqueroMontaCaballo;
   $arqueroACaballo -> dispararFlecha();
-  $arqueroACaballo -> move();                      # Esta acción (Cabalgar) es la misma que realiza el 'Caballero'
+  $arqueroACaballo -> cabalgar();
   echo '<hr />';
 
-/* NOTA: Al implementar la herencia múltiple entre las clases 'Arquero' y 'ArqueroMontaCaballo'
-         se genera un ERROR porque que PHP no permite este tipo de herencia múltiple como si lo
-         hacen otros lenguajes.
-
-         Otra de las soluciones que se pueden implementar es el polimorfismo, sin embargo se puede
-         optar por soluciones más sencillas una de ellas y una de ellas son los Traits (o Rasgos)
-         en PHP
-          */
+/* NOTA: */
