@@ -15,6 +15,11 @@
       public function __construct( $nombre ) {
           $this -> nombre = $nombre;
       }
+
+      public function is( $otraPersona ) {
+
+          return $this -> id == $otraPersona -> id;
+      }
     }
 
     # Objetos que representan a una entidad (No 'Value Objects')
@@ -25,5 +30,5 @@
     $elisa2 = new Persona( 'Elisa' );           # Instancia 2
     $elisa2 -> id = 1;                           # ID del objeto
 
-    // En este caso las validaciones hay que hacerlas a las propiedades más relevantes del objeto y no entre los simples objetos entre sí
-    echo ( $elisa -> id == $elisa2 -> id ) ? 'VERDADERO' : 'FALSO';
+    # En este caso las validaciones hay que hacerlas a las propiedades más relevantes del objeto y no entre los simples objetos entre sí
+    echo $elisa -> is( $elisa2 ) ? 'VERDADERO' : 'FALSO';
