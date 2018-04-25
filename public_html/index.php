@@ -27,7 +27,7 @@
       }
   }
 
-  class ArqueroMontaCaballo extends Arquero {
+  class ArqueroMontaCaballo extends Arquero, Caballero {
       public function move() {
           echo "<p>Cabalga</p>";
       }
@@ -49,7 +49,11 @@
   $arqueroACaballo -> move();                      # Esta acción (Cabalgar) es la misma que realiza el 'Caballero'
   echo '<hr />';
 
-/* NOTA: Al implementar la herencia entre las clases 'Arquero' y 'ArqueroMontaCaballo'
-         podemos dar solución a las acciones entre dos de los objetos, sin embargo
-         la funcionalidad compartida ya no se podrá resolver por este método ya
-         que PHP no permite la herencia múltiple como si lo hacen otros lenguajes */
+/* NOTA: Al implementar la herencia múltiple entre las clases 'Arquero' y 'ArqueroMontaCaballo'
+         se genera un ERROR porque que PHP no permite este tipo de herencia múltiple como si lo
+         hacen otros lenguajes.
+
+         Otra de las soluciones que se pueden implementar es el polimorfismo, sin embargo se puede
+         optar por soluciones más sencillas una de ellas y una de ellas son los Traits (o Rasgos)
+         en PHP
+          */
