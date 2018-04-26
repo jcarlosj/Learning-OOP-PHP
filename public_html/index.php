@@ -21,10 +21,7 @@
           echo "<p>Dispara una flecha</p>";
       }
 
-      public function getCantidadFlechas() {
-          # Valida si la clase que utiliza este 'Trait' tiene definida la cantidad de flechas y si no asigna un valor por defecto
-          return isset( $this -> cantidad ) ? $this -> cantidad: 50 ;        # Reescribe la propiedad e la clase si no existe
-      }
+      abstract public function getCantidadFlechas();
   }
 
   trait PuedeMontarCaballo {
@@ -46,6 +43,11 @@
 
   class Arquero {
       use PuedeDispararFlechas;
+
+      public function getCantidadFlechas() {
+
+          return 30;                            # Reescribirá la cantidad de la propiedad
+      }
   }
 
   class ArqueroMontaCaballo {
@@ -59,6 +61,11 @@
       }    /* NOTA: Si esta solución hay que implementarla de manera muy frecuente en el desarrollo,
                     probablemente esta no sea la mejor opción para implementar */
       use PuedeDispararFlechas;
+
+      public function getCantidadFlechas() {
+
+          return 100;                            # Reescribirá la cantidad de la propiedad
+      }
   }
 
   /* Instancias */
