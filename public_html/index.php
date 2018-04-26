@@ -17,10 +17,13 @@
   }
 
   trait PuedeDispararFlechas {
-      public $cantidad = 50;                     # Definir propiedad en el Trait
-
       public function dispararFlecha() {
           echo "<p>Dispara una flecha</p>";
+      }
+
+      public function getCantidadFlechas() {
+          # Valida si la clase que utiliza este 'Trait' tiene definida la cantidad de flechas y si no asigna un valor por defecto
+          return isset( $this -> cantidad ) ? $this -> cantidad: 50 ;        # Reescribe la propiedad e la clase si no existe
       }
   }
 
@@ -42,12 +45,12 @@
   }
 
   class Arquero {
-      public $cantidad = 20;            # Reescribir la propiedad en la clase
-      
       use PuedeDispararFlechas;
   }
 
   class ArqueroMontaCaballo {
+      public $cantidad = 20;            # Propiedad en la clase
+
       use AccionesBasicas, PuedeMontarCaballo {
           PuedeMontarCaballo :: move insteadof AccionesBasicas;         # Define cual es el 'Trait' y el método que se va a usar
           PuedeMontarCaballo :: move as cabalgar;                       # Agrega un alias al nombre del 'Trait'
@@ -60,6 +63,7 @@
 
   /* Instancias */
   $arqueroACaballo = new ArqueroMontaCaballo;
+  echo "Cantidad flechas: {$arqueroACaballo->getCantidadFlechas()}";
   $arqueroACaballo -> dispararFlecha();
   $arqueroACaballo -> move();                    # Por defecto será el método 'move' del 'Trait' PuedeMontarCaballo
   $arqueroACaballo -> movimientoBasico();        # Usa el alias y llama a el método 'move' del 'Trait' AccionesBasicas
