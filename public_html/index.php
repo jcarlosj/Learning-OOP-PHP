@@ -17,6 +17,8 @@
   }
 
   trait PuedeDispararFlechas {
+      public $cantidad = 50;                     # Definir propiedad en el Trait
+
       public function dispararFlecha() {
           echo "<p>Dispara una flecha</p>";
       }
@@ -40,6 +42,8 @@
   }
 
   class Arquero {
+      public $cantidad = 20;            # Reescribir la propiedad en la clase
+      
       use PuedeDispararFlechas;
   }
 
