@@ -6,8 +6,6 @@
   require '../vendor/autoload.php';
   require '../vendor/paquete_externo/HTMLBuilder.php';        # Por ahora no lo incluimos en el 'autoload' con Composer
 
-  use paquete_externo\HTMLBuilder;
-
   $html = new HTMLBuilder();
   echo $html -> hr();
   echo $html -> success( 'Todo salió bien!' );
