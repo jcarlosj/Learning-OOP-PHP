@@ -4,6 +4,7 @@
 
   # Implementa el 'autoload' generado por 'Composer' (para cargar las clases del proyecto automáticamente)
   require '../vendor/autoload.php';
+  require '../vendor/paquete_externo/Macroable.php';        # Por ahora no lo incluimos en el 'autoload' con Composer
   require '../vendor/paquete_externo/HTMLBuilder.php';        # Por ahora no lo incluimos en el 'autoload' con Composer
 
   use paquete_externo\HTMLBuilder;
