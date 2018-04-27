@@ -24,7 +24,10 @@
             # Valida si existe una macro por su nombre
             if( static :: hasMacro( $nombre_metodo ) ) {
                 # Retorna el llamado o ejecución del MACRO almacenado en nuestra colección o 'Array' de macros disponibles
-                return call_user_func_array( static :: $macros[ $nombre_metodo ], $argumentos );
+                return call_user_func_array(
+                    static :: $macros[ $nombre_metodo ] -> bindTo( $this, static :: class ),      # Implementa el método 'bindTo' de 'Closure' con esto se amarra el llamado de la función anómina a la clase actual  
+                    $argumentos
+                );
             }
 
             # Esta excepción se utiliza para indicar que se intentó llamar a un método que no existe o que no es valido
