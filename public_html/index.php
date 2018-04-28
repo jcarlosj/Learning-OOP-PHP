@@ -10,6 +10,4 @@
       'birthday' => '30/04/1977'
   ]);
 
-  $usuario -> edad;       # Llama al método 'getEdadAtributo'
-
-  #echo "<p>{$usuario->nombre} tiene {$usuario->edad} años</p>";
+  echo "<p>{$usuario->nombre} tiene {$usuario->edad} años</p>";
