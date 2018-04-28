@@ -9,7 +9,9 @@
             "email": "jcjimenez29@misena.edu.co"
         }
     ],
-    "require": {},
+    "require": {
+        "nesbot/carbon": "^1.27"
+    },
     "autoload": {
         "files":[],
         "psr-4": {
